@@ -16,9 +16,9 @@
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}img{max-width:100%;display:block}svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-#prog{position:fixed;left:0;top:0;height:2px;width:0;z-index:50;background:linear-gradient(90deg,var(--acc),var(--acc2),var(--pink))}
-.orbs{position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden}.orbs i{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(100px);opacity:.16;animation:orb 28s ease-in-out infinite}
-.orbs i:nth-child(1){background:var(--acc);left:-160px;top:8%}.orbs i:nth-child(2){background:var(--acc2);right:-180px;top:42%;animation-delay:-10s}.orbs i:nth-child(3){background:var(--pink);left:35%;top:80%;animation-delay:-18s}
+#prog{position:fixed;left:0;top:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;z-index:50;background:linear-gradient(90deg,var(--acc),var(--acc2),var(--pink))}
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden;contain:strict}.orbs i{position:absolute;width:520px;height:520px;border-radius:50%;opacity:.13;animation:orb 28s ease-in-out infinite;will-change:transform;background-blend-mode:screen}
+.orbs i:nth-child(1){background:radial-gradient(closest-side,var(--acc),transparent);left:-160px;top:8%}.orbs i:nth-child(2){background:radial-gradient(closest-side,var(--acc2),transparent);right:-180px;top:42%;animation-delay:-10s}.orbs i:nth-child(3){background:radial-gradient(closest-side,var(--pink),transparent);left:35%;top:80%;animation-delay:-18s}
 @keyframes orb{33%{transform:translate(130px,-90px) scale(1.15)}66%{transform:translate(-100px,80px) scale(.9)}}
 nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px) saturate(1.4);background:#08080bc4;border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:14px;height:64px}.brand{display:flex;align-items:center;gap:10px;font-weight:750;font-size:18px}.brand img{width:34px;height:34px;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}.brand:hover img{transform:rotate(-8deg) scale(1.08)}
@@ -28,7 +28,11 @@ nav .links{margin-left:auto;display:flex;gap:24px;font-size:14.5px;color:var(--m
 .stage{height:190px;display:flex;justify-content:center;align-items:flex-start;margin-bottom:26px}
 .isl{background:#000;color:#f2f2f2;border-radius:32px;box-shadow:0 0 0 1px #ffffff1f,0 30px 80px #000c,0 0 140px -40px var(--acc);overflow:hidden;transition:width .7s cubic-bezier(.3,1.25,.4,1),height .7s cubic-bezier(.3,1.25,.4,1),border-radius .7s;position:relative;width:250px;height:62px}
 .isl .st{position:absolute;inset:0;display:flex;align-items:center;gap:12px;padding:0 20px;opacity:0;transform:scale(.92);transition:opacity .35s,transform .45s;pointer-events:none;text-align:left}
-.isl[data-s="pill"] .s-pill,.isl[data-s="msg"] .s-msg,.isl[data-s="music"] .s-music,.isl[data-s="drop"] .s-drop{opacity:1;transform:none;transition-delay:.25s}
+.isl[data-s="pill"] .s-pill,.isl[data-s="msg"] .s-msg,.isl[data-s="music"] .s-music,.isl[data-s="drop"] .s-drop,.isl[data-s="timer"] .s-timer,.isl[data-s="phone"] .s-phone{opacity:1;transform:none;transition-delay:.25s;pointer-events:auto}
+.isl[data-s="timer"]{width:min(360px,92vw);height:74px;border-radius:30px}.isl[data-s="phone"]{width:min(470px,92vw);height:96px;border-radius:32px}
+.s-timer b{font-size:28px;font-variant-numeric:tabular-nums;letter-spacing:-.5px}.s-timer .ring2{width:40px;height:40px;flex:none}.s-timer .ring2 circle{fill:none;stroke-width:4}.s-timer .ring2 .bg{stroke:#ffffff1f}.s-timer .ring2 .fg{stroke:var(--acc2);stroke-linecap:round;stroke-dasharray:113;stroke-dashoffset:0;transform:rotate(-90deg);transform-origin:center;animation:tdash 6s linear infinite}@keyframes tdash{to{stroke-dashoffset:113}}.s-timer small{color:#c8c8d4;margin-left:auto}
+.s-phone .pi{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#2AABEE,#1d7fd1);display:grid;place-items:center;flex:none}.s-phone .pi svg{width:24px;height:24px;color:#fff}.s-phone .tx{flex:1;min-width:0}.s-phone b{display:block;font-size:15px}.s-phone small{color:#c8c8d4}.s-phone .pb2{height:5px;border-radius:3px;background:#ffffff1f;margin-top:8px;overflow:hidden}.s-phone .pb2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2AABEE,var(--acc2));animation:up 3.2s ease-out infinite}@keyframes up{to{width:100%}}
+.demo{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:-6px 0 34px}.demo button{height:36px;padding:0 14px;border-radius:999px;border:0;background:#ffffff0c;box-shadow:inset 0 0 0 1px var(--line);color:var(--mute);font:600 13.5px inherit;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:background .2s,color .2s,transform .15s}.demo button svg{width:16px;height:16px}.demo button:hover{color:var(--tx);transform:translateY(-1px)}.demo button.on{background:#8c7cff2e;color:#fff;box-shadow:inset 0 0 0 1px #8c7cff88}.demo .hint{width:100%;text-align:center;font-size:12.5px;color:var(--mute);opacity:.8}
 .isl[data-s="msg"]{width:min(460px,92vw);height:84px;border-radius:30px}.isl[data-s="music"]{width:min(560px,92vw);height:150px;border-radius:38px}.isl[data-s="drop"]{width:min(420px,92vw);height:110px;border-radius:34px}
 .eyes{display:flex;gap:7px}.eyes i{width:9px;height:16px;border-radius:5px;background:#fff;animation:blink 5s infinite}@keyframes blink{0%,44%,48%,100%{transform:scaleY(1)}46%{transform:scaleY(.12)}}
 .s-pill b{font-size:19px;font-variant-numeric:tabular-nums}.s-pill .tmp{color:#c8c8d4}
@@ -38,7 +42,7 @@ nav .links{margin-left:auto;display:flex;gap:24px;font-size:14.5px;color:var(--m
 .bar{height:4px;border-radius:2px;background:#ffffff24;margin-top:14px;overflow:hidden}.bar i{display:block;height:100%;width:40%;background:var(--acc);animation:prog 9s linear infinite}@keyframes prog{to{width:100%}}
 .eq{display:flex;gap:3px;align-items:flex-end;height:28px}.eq i{width:4px;border-radius:2px;background:var(--acc2);animation:eq .9s ease-in-out infinite}.eq i:nth-child(2){animation-delay:.15s;background:var(--acc)}.eq i:nth-child(3){animation-delay:.3s}.eq i:nth-child(4){animation-delay:.08s;background:var(--acc)}@keyframes eq{0%,100%{height:6px}50%{height:28px}}
 .s-drop{justify-content:center;flex-direction:column;gap:4px!important;text-align:center!important;border:2px dashed #ffffff30;border-radius:inherit;inset:8px!important}.s-drop svg{width:28px;height:28px;color:var(--acc2)}
-h1{font-size:clamp(40px,7vw,78px);line-height:1.02;margin:0 0 20px;letter-spacing:-2.5px;font-weight:780}h1 .g{background:linear-gradient(100deg,#fff 10%,#c9c0ff 45%,#7fe8da 90%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:gl 8s ease-in-out infinite}@keyframes gl{50%{background-position:100% 0}}
+h1{font-size:clamp(40px,7vw,78px);line-height:1.02;margin:0 0 20px;letter-spacing:-2.5px;font-weight:780}h1 .w{display:inline-block;opacity:0;transform:translateY(.4em) rotate(2deg);filter:blur(6px);animation:wIn .9s cubic-bezier(.2,.9,.25,1) forwards;animation-delay:calc(var(--i) * 90ms + 150ms)}@keyframes wIn{to{opacity:1;transform:none;filter:none}}.lead,.cta,.meta,.badges{animation:fUp .9s cubic-bezier(.2,.9,.25,1) both}.lead{animation-delay:.5s}.cta{animation-delay:.62s}.meta,.badges{animation-delay:.74s}@keyframes fUp{from{opacity:0;transform:translateY(16px)}}h1 .g{background:linear-gradient(100deg,#fff 10%,#c9c0ff 45%,#7fe8da 90%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:gl 8s ease-in-out infinite}@keyframes gl{50%{background-position:100% 0}}
 .lead{color:var(--mute);font-size:clamp(17px,2.2vw,20px);max-width:680px;margin:0 auto 34px}
 .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px;border-radius:15px;font-weight:700;font-size:16px;transition:transform .15s,filter .15s,box-shadow .2s;position:relative;overflow:hidden}.btn:hover{transform:translateY(-2px)}
@@ -71,9 +75,16 @@ h2{font-size:clamp(30px,4.4vw,46px);line-height:1.1;margin:10px 0 14px;letter-sp
 .fbf button.send{height:50px;border:0;border-radius:14px;background:linear-gradient(135deg,#9d8fff,#7a68ff);color:#fff;font:700 16px inherit;cursor:pointer}.fbf button.send:disabled{opacity:.5;cursor:default}.fbmsg{min-height:22px;font-size:14px}.fbmsg.ok{color:#7ff0a8}.fbmsg.err{color:#ff8a8a}
 .final{text-align:center;padding:100px 0 110px}
 footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:13.5px}footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}footer .brand{font-size:15px}footer .brand img{width:26px;height:26px}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.9,.25,1)}.reveal.in{opacity:1;transform:none}
-@media (max-width:860px){nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps,.fb{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.9,.25,1);transition-delay:calc(var(--d,0) * 70ms)}.reveal.in{opacity:1;transform:none}
+.feat .img img,.shot img{opacity:0;transform:scale(.985);transition:opacity .6s,transform .8s cubic-bezier(.2,.9,.25,1)}.feat .img img.ok,.shot img.ok{opacity:1;transform:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:70px auto 0;max-width:980px}.stat{background:var(--card);border-radius:20px;padding:22px 18px;text-align:center;box-shadow:inset 0 0 0 1px var(--line)}.stat b{display:block;font-size:clamp(30px,4vw,42px);font-weight:800;letter-spacing:-1px;background:linear-gradient(120deg,#fff,#c9c0ff 60%,#7fe8da);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}.stat span{color:var(--mute);font-size:14px}
+.mq{overflow:hidden;padding:26px 0;border-block:1px solid var(--line);background:var(--bg2);-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}.mq .tr{display:flex;gap:12px;width:max-content;animation:mq 50s linear infinite}.mq:hover .tr{animation-play-state:paused}.mq span{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:#ffffff08;box-shadow:inset 0 0 0 1px var(--line);color:#d6d6e0;font-size:14.5px;white-space:nowrap}.mq svg{width:16px;height:16px;color:var(--acc2)}@keyframes mq{to{transform:translateX(-50%)}}
+nav .links a.on{color:var(--tx)}nav .links a.on::after{transform:scaleX(1)}
+.faq details>p{overflow:hidden}.faq details[open]>p{animation:fOpen .35s ease}@keyframes fOpen{from{opacity:0;transform:translateY(-6px)}}
+.top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:14px;border:0;background:#14141ae6;backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px var(--line),0 10px 30px #0008;color:var(--tx);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none;z-index:30}.top.on{opacity:1;transform:none;pointer-events:auto}.top svg{width:20px;height:20px;transform:rotate(180deg)}
+section{content-visibility:auto;contain-intrinsic-size:auto 900px}
+@media (max-width:860px){nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps,.fb{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding-top:50px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,h1 .w,.feat .img img,.shot img{opacity:1;transform:none;filter:none}}
 </style>
 </head>
 <body>
@@ -95,6 +106,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
 <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5 13.8 9l5.7 1.5-5.7 1.6L12 18l-1.8-5.9L4.5 10.5 10.2 9z"/></symbol>
 <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 13.5 6.5 5h11l2.5 8.5V19H4z"/><path d="M4 13.5h4.5l1.5 2.5h4l1.5-2.5H20"/></symbol>
+<symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2.5h4"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></symbol>
 </defs></svg>
 <nav><div class="wrap"><a class="brand" href="#"><img src="icon.svg" alt="">Island</a>
 <div class="links"><a href="#features">Можливості</a><a href="#tour">Огляд</a><a href="#install">Встановлення</a><a href="#faq">Питання</a><a href="#feedback">Відгук</a></div>
@@ -106,26 +119,31 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
     <div class="st s-msg"><span class="av">О</span><span class="tx"><b>Олена</b><small>Скинеш фото з вихідних? 📸</small></span><span class="rp">Відповісти</span></div>
     <div class="st s-music"><span class="art"></span><span class="tx"><b>Нічне місто</b><small>Island Demo</small><div class="bar"><i></i></div></span><span class="eq"><i></i><i></i><i></i><i></i></span></div>
     <div class="st s-drop"><svg class="i"><use href="#i-inbox"/></svg><b>Відпустіть, щоб покласти на полицю</b><small style="color:#c8c8d4">Файли почекають на острові</small></div>
+    <div class="st s-timer"><svg class="ring2" viewBox="0 0 40 40"><circle class="bg" cx="20" cy="20" r="18"/><circle class="fg" cx="20" cy="20" r="18"/></svg><b id="tclock">04:59</b><small>Чай готовий за 5 хв</small></div>
+    <div class="st s-phone"><span class="pi"><svg class="i"><use href="#i-send"/></svg></span><span class="tx"><b>Надсилаю на телефон</b><small>Фото з вихідних.zip · 48 МБ</small><div class="pb2"><i></i></div></span></div>
   </div></div>
-  <h1>Динамічний острів<br><span class="g">для Windows</span></h1>
+  <div class="demo" id="demo"><button data-s="music"><svg class="i"><use href="#i-music"/></svg>Музика</button><button data-s="msg"><svg class="i"><use href="#i-chat"/></svg>Повідомлення</button><button data-s="phone"><svg class="i"><use href="#i-phone"/></svg>На телефон</button><button data-s="timer"><svg class="i"><use href="#i-timer"/></svg>Таймер</button><button data-s="drop"><svg class="i"><use href="#i-inbox"/></svg>Полиця</button><span class="hint">Натисніть — острів покаже, як це виглядає</span></div>
+  <h1 id="h1"><span class="w" style="--i:0">Динамічний</span> <span class="w" style="--i:1">острів</span><br><span class="g"><span class="w" style="--i:2">для</span> <span class="w" style="--i:3">Windows</span></span></h1>
   <p class="lead">Музика, сповіщення з відповіддю, файли на телефон, нотатки й десятки інструментів — у живій пілюлі вгорі екрана. Завжди під рукою, ніколи не заважає.</p>
   <div class="cta"><a class="btn main dl" href="#"><svg class="i"><use href="#i-down"/></svg>Завантажити безкоштовно</a><a class="btn ghost" href="#features">Що вміє Island</a></div>
   <div class="meta" id="ver">Windows 10 і 11</div>
   <div class="badges"><span>🇺🇦 Українською</span><span>10 мов інтерфейсу</span><span>Без реклами</span><span>Оновлюється сам</span><span>Підписані оновлення</span></div>
-  <div class="shot reveal ring tilt"><img src="img/today.png" alt="Головна панель Island: день, погода, найближчі справи, музика" loading="eager"></div>
+  <div class="shot reveal ring tilt"><img src="img/today.png" alt="Головна панель Island: день, погода, найближчі справи, музика" loading="eager" decoding="async"></div>
+  <div class="stats"><div class="stat reveal" style="--d:0"><b data-n="60" data-suf="+">0</b><span>інструментів</span></div><div class="stat reveal" style="--d:1"><b data-n="10">0</b><span>мов інтерфейсу</span></div><div class="stat reveal" style="--d:2"><b data-n="2" data-suf=" ГБ">0</b><span>файл на телефон</span></div><div class="stat reveal" style="--d:3"><b data-n="0" data-suf=" ₴">0</b><span>назавжди, без реклами</span></div></div>
 </div></header>
+<div class="mq" aria-hidden="true"><div class="tr" id="mq"><span><svg class="i"><use href="#i-music"/></svg>Будь-який плеєр</span><span><svg class="i"><use href="#i-chat"/></svg>Відповіді в Telegram</span><span><svg class="i"><use href="#i-phone"/></svg>Файли до 2 ГБ</span><span><svg class="i"><use href="#i-note"/></svg>Нотатки з таблицями</span><span><svg class="i"><use href="#i-case"/></svg>Зарплата й ПДВ</span><span><svg class="i"><use href="#i-cpu"/></svg>Монітор системи</span><span><svg class="i"><use href="#i-game"/></svg>Ігровий режим</span><span><svg class="i"><use href="#i-code"/></svg>Git, SQL, JSON</span><span><svg class="i"><use href="#i-globe"/></svg>Перекладач</span><span><svg class="i"><use href="#i-timer"/></svg>Таймер і будильники</span><span><svg class="i"><use href="#i-spark"/></svg>Текст з екрана</span><span><svg class="i"><use href="#i-shield"/></svg>Підписані оновлення</span></div></div>
 
 <section id="features"><div class="wrap">
   <div class="eyebrow reveal">Можливості</div><h2 class="reveal">Усе потрібне — в одному місці</h2><p class="sub reveal">Острів сидить над вкладками браузера, пропускає кліки, коли не потрібен, і розгортається, коли ви наводите курсор.</p>
   <div class="grid">
-    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-music"/></svg></span><b>Музика</b><p>Будь-який плеєр, обкладинка, хвиля в ритм, текст пісні, плейлисти YouTube Music і Spotify.</p></div>
+    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-music"/></svg></span><b>Музика</b><p>Будь-який плеєр, обкладинка, хвиля в ритм, текст пісні й запуск Spotify чи YouTube Music одним кліком.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-chat"/></svg></span><b>Сповіщення й відповіді</b><p>Telegram з полем відповіді, сповіщення програм і живі події системи.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-phone"/></svg></span><b>Файли й текст на телефон</b><p>До 2 ГБ через «Збережене» Telegram з будь-якої мережі або через QR у Wi-Fi.</p></div>
-    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-note"/></svg></span><b>Нотатки</b><p>Заголовки, стилі, кольори, списки й чеклісти, таблиці — як у нотатках iPhone.</p></div>
-    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-case"/></svg></span><b>Інструменти</b><p>Бухгалтерія, робота, освіта, документи й побут: ПДВ, зарплата, сума прописом, курси НБУ.</p></div>
+    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-note"/></svg></span><b>Нотатки</b><p>Заголовки, стилі, кольори, чеклісти й таблиці з рядками, стовпцями та Tab — як у нотатках iPhone.</p></div>
+    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-case"/></svg></span><b>Інструменти</b><p>Калькулятор, ПДВ, зарплата, сума прописом, курси НБУ, робочі дні — і ваші робочі програми поруч.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-cpu"/></svg></span><b>Монітор системи</b><p>Процесор, відеокарта, памʼять, диски й мережа з живими графіками.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-game"/></svg></span><b>Ігри</b><p>Steam, Epic, GOG і свої лаунчери, друзі онлайн, безкоштовні ігри, ігровий режим.</p></div>
-    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-code"/></svg></span><b>Розробка</b><p>25+ інструментів у теках: веб, дані, SQL, Python, безпека, мережа.</p></div>
+    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-code"/></svg></span><b>Розробка</b><p>30+ інструментів у теках: веб, дані, SQL, Python, Git і Docker, безпека, мережа.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-globe"/></svg></span><b>Перекладач і час</b><p>Переклад наживо, світовий годинник, таймер, будильники, нагадування.</p></div>
   </div>
   <div class="more reveal"><span><svg class="i"><use href="#i-clip"/></svg>Буфер обміну з історією</span><span><svg class="i"><use href="#i-spark"/></svg>Текст з екрана (OCR)</span><span><svg class="i"><use href="#i-bell"/></svg>Будильники й нагадування</span><span><svg class="i"><use href="#i-sun"/></svg>Погода з попередженням про дощ</span><span><svg class="i"><use href="#i-spark"/></svg>Персонажі з настроєм</span><span><svg class="i"><use href="#i-inbox"/></svg>Полиця для файлів</span><span><svg class="i"><use href="#i-chat"/></svg>ШІ-чати: ChatGPT, Claude, Gemini</span><span><svg class="i"><use href="#i-code"/></svg>Запити Claude Code з кнопками</span><span><svg class="i"><use href="#i-shield"/></svg>Ключі зашифровані, оновлення підписані</span><span><svg class="i"><use href="#i-globe"/></svg>10 мов інтерфейсу</span></div>
@@ -134,22 +152,22 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
 <section id="tour" style="padding-top:20px"><div class="wrap">
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Головна</div><h2>Ваш день — одним поглядом</h2><p class="sub">Коли музика не грає, острів показує, що попереду: погоду й дощ, найближчі будильники та нагадування, непрочитану пошту й нові відео — і запускає музику одним кліком.</p>
     <ul><li>Погода зараз і попередження про дощ</li><li>Будильники, нагадування, події календаря</li><li>Щодня — нова порада про можливості</li></ul></div>
-    <div class="img reveal tilt"><img src="img/today.png" alt="Картка «Сьогодні»" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/today.png" alt="Картка «Сьогодні»" loading="lazy" decoding="async"></div></div>
   <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Полиця</div><h2>Файли, нотатки й телефон — разом</h2><p class="sub">Перетягніть файли на острів — вони почекають. Поруч нотатки з повноцінним форматуванням, і все це — на телефон однією кнопкою.</p>
     <ul><li>Назва, заголовки, моно, жирний, курсив, підкреслення</li><li>Списки, чеклісти, цитати, таблиці, кольори й маркер</li><li>Надіслати в «Збережене» Telegram або через QR</li></ul></div>
-    <div class="img reveal tilt"><img src="img/notes.png" alt="Полиця з файлами й нотатками" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/notes.png" alt="Полиця з файлами й нотатками" loading="lazy" decoding="async"></div></div>
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Сповіщення</div><h2>Відповідайте, не перемикаючи вікна</h2><p class="sub">Повідомлення Telegram зʼявляються на острові з полем відповіді. Серія повідомлень складається в одне, а чати без звуку лишаються тихими.</p>
     <ul><li>Вхід у Telegram за QR-кодом</li><li>Скільки показувати сповіщення — обираєте ви</li><li>Історія в центрі сповіщень</li></ul></div>
-    <div class="img reveal tilt"><img src="img/toast.png" alt="Повідомлення Telegram з полем відповіді" loading="lazy"></div></div>
-  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Інструменти</div><h2>Для роботи, навчання й побуту</h2><p class="sub">Зарплата «на руки», ФОП, ПДВ і сума прописом, курси НБУ, перевірка IBAN, середній бал, робочі дні, комуналка, пальне, поділ рахунку — а показувати можна лише потрібні теки.</p></div>
-    <div class="img reveal tilt"><img src="img/tools.png" alt="Інструменти: зарплата на руки" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/toast.png" alt="Повідомлення Telegram з полем відповіді" loading="lazy" decoding="async"></div></div>
+  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Інструменти</div><h2>Для роботи, навчання й побуту</h2><p class="sub">Калькулятор, зарплата «на руки», ФОП, ПДВ і сума прописом, курси НБУ, перевірка IBAN, середній бал, робочі дні, римські числа, комуналка, пальне, поділ рахунку. Над інструментами — панель ваших робочих програм.</p></div>
+    <div class="img reveal tilt"><img src="img/tools.png" alt="Інструменти: зарплата на руки" loading="lazy" decoding="async"></div></div>
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Система</div><h2>Що відбувається з вашим ПК</h2><p class="sub">Навантаження процесора, відеокарти, памʼяті й дисків з живими графіками, вільне місце й програми, що гальмують.</p>
     <ul><li>Сповіщення, коли ПК перевантажений або закінчується місце</li><li>Завершити програму одним кліком</li></ul></div>
-    <div class="img reveal tilt"><img src="img/system.png" alt="Монітор системи" loading="lazy"></div></div>
-  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Розробка</div><h2>Інструменти розробника поруч</h2><p class="sub">Форматування SQL і JSON, CSV ⇄ JSON, TypeScript-інтерфейси й Python-класи, хеші, підмережі, cron, кольори з контрастом WCAG, локальні сервери — і запити Claude Code з кнопками.</p></div>
-    <div class="img reveal tilt"><img src="img/dev.png" alt="Форматування SQL" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/system.png" alt="Монітор системи" loading="lazy" decoding="async"></div></div>
+  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Розробка</div><h2>Інструменти розробника поруч</h2><p class="sub">Форматування SQL і JSON, CSV ⇄ JSON, TypeScript-інтерфейси й Python-класи, шпаргалки Git і Docker, SemVer, екранування, Markdown, хеші, підмережі, cron, кольори з контрастом WCAG, локальні сервери — і запити Claude Code з кнопками.</p></div>
+    <div class="img reveal tilt"><img src="img/dev.png" alt="Форматування SQL" loading="lazy" decoding="async"></div></div>
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Перекладач</div><h2>Переклад, поки ви пишете</h2><p class="sub">Вставте текст — переклад зʼявиться сам. 12 мов, автовизначення, заміна оригіналу одним кліком.</p></div>
-    <div class="img reveal tilt"><img src="img/text.png" alt="Перекладач" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/text.png" alt="Перекладач" loading="lazy" decoding="async"></div></div>
 </div></section>
 
 <section id="install" style="background:var(--bg2)"><div class="wrap">
@@ -179,6 +197,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
 
 <section class="final"><div class="wrap"><h2 class="reveal">Спробуйте Island</h2><p class="sub reveal" style="margin:0 auto 30px">Безкоштовно для Windows 10 і 11.</p><a class="btn main dl reveal" href="#"><svg class="i"><use href="#i-down"/></svg>Завантажити</a></div></section>
 
+<button class="top" id="top" aria-label="Вгору"><svg class="i"><use href="#i-down"/></svg></button>
 <footer><div class="wrap"><span class="brand"><img src="icon.svg" alt="">Island · зроблено в Україні 🇺🇦</span><span><a id="gh" href="#">GitHub</a> · <a id="rel" href="#">Усі версії</a></span></div></footer>
 <script>
 const owner = location.hostname.endsWith('github.io') ? location.hostname.split('.')[0] : 'Freshman-69';
@@ -191,15 +210,38 @@ fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`).then(r =>
   const v = r.tag_name.replace(/^v/, ''); document.getElementById('ver').textContent = `Версія ${v}${a ? ' · ' + Math.round(a.size / 1048576) + ' МБ' : ''} · Windows 10 і 11`;
   document.getElementById('news').textContent = `Island ${v} — ${new Date(r.published_at).toLocaleDateString('uk', { day: 'numeric', month: 'long', year: 'numeric' })}\n\n` + String(r.body || '').replace(/\n*(sha256|sig): \S+/g, '').replace(/\*\*/g, '').replace(/^#+\s*/gm, '').trim();
 }).catch(() => { document.getElementById('news').textContent = 'Нова версія ось-ось зʼявиться.'; });
-const isl = document.getElementById('isl'), seq = ['pill', 'msg', 'pill', 'music', 'drop', 'pill'], dur = { pill: 2400, msg: 3000, music: 4200, drop: 2600 };
-let si = 0; (function step() { isl.dataset.s = seq[si]; const d = dur[seq[si]]; si = (si + 1) % seq.length; setTimeout(step, d); })();
+const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
+// hero island: plays a little story; the chips under it switch states by hand (autoplay resumes after a pause)
+const isl = document.getElementById('isl'), seq = ['pill', 'msg', 'pill', 'music', 'phone', 'pill', 'timer', 'drop', 'pill'], dur = { pill: 2200, msg: 3000, music: 4200, drop: 2600, timer: 3200, phone: 3400 };
+const demo = document.getElementById('demo'); let si = 0, autoT = 0;
+const show = s => { isl.dataset.s = s; for (const b of demo.querySelectorAll('button')) b.classList.toggle('on', b.dataset.s === s); };
+function step() { show(seq[si]); const d = dur[seq[si]]; si = (si + 1) % seq.length; autoT = setTimeout(step, d); }
+step();
+demo.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; clearTimeout(autoT); show(isl.dataset.s === b.dataset.s ? 'pill' : b.dataset.s); autoT = setTimeout(step, 7000); });
+isl.addEventListener('click', () => { clearTimeout(autoT); step(); });
+let tsec = 299; setInterval(() => { tsec = tsec > 0 ? tsec - 1 : 299; document.getElementById('tclock').textContent = String(Math.floor(tsec / 60)).padStart(2, '0') + ':' + String(tsec % 60).padStart(2, '0'); }, 1000);
+// marquee: duplicate once so it loops seamlessly
+const mq = document.getElementById('mq'); mq.innerHTML += mq.innerHTML;
+// staggered cards
+document.querySelectorAll('.grid .card').forEach((c, i) => c.style.setProperty('--d', i % 3));
+document.querySelectorAll('.steps .step').forEach((c, i) => c.style.setProperty('--d', i));
+// images fade in once decoded
+for (const img of document.querySelectorAll('.feat .img img,.shot img')) { if (img.complete) img.classList.add('ok'); else img.addEventListener('load', () => img.classList.add('ok'), { once: true }); img.addEventListener('error', () => img.classList.add('ok'), { once: true }); }
+// count-up numbers
+const cio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; cio.unobserve(e.target); const el = e.target, n = +el.dataset.n, suf = el.dataset.suf || ''; if (RM || !n) { el.textContent = n + suf; return; } const t0 = performance.now(); (function f(t) { const k = Math.min(1, (t - t0) / 1400), v = Math.round(n * (1 - Math.pow(1 - k, 3))); el.textContent = v + suf; if (k < 1) requestAnimationFrame(f); })(t0); }), { threshold: .6 });
+document.querySelectorAll('[data-n]').forEach(el => cio.observe(el));
+// nav: highlight the section you are reading
+const links = [...document.querySelectorAll('nav .links a')], nio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) for (const a of links) a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); }), { rootMargin: '-45% 0px -50% 0px' });
+for (const a of links) { const sec = document.querySelector(a.getAttribute('href')); if (sec) nio.observe(sec); }
+// back to top
+const topBtn = document.getElementById('top'); topBtn.onclick = () => scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' });
 const hc = () => { document.getElementById('hclock').textContent = new Date().toLocaleTimeString('uk', { hour: '2-digit', minute: '2-digit' }); }; hc(); setInterval(hc, 10000);
 for (const c of document.querySelectorAll('.card')) c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
 if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) for (const el of document.querySelectorAll('.tilt')) {
   el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(1400px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`; });
   el.addEventListener('mouseleave', () => { el.style.transform = ''; });
 }
-addEventListener('scroll', () => { const h = document.documentElement; document.getElementById('prog').style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; }, { passive: true });
+let sTick = false; addEventListener('scroll', () => { if (sTick) return; sTick = true; requestAnimationFrame(() => { sTick = false; const h = document.documentElement; document.getElementById('prog').style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`; topBtn.classList.toggle('on', h.scrollTop > 900); }); }, { passive: true });
 let fbKind = 'idea', fbKey = '';
 fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/island.json?t=${Date.now()}`).then(r => r.json()).then(j => { fbKey = j.feedbackKey || ''; if (!fbKey) { document.getElementById('fbs').disabled = true; document.getElementById('fbm').textContent = 'Форма відгуків скоро запрацює.'; } }).catch(() => {});
 for (const b of document.querySelectorAll('#fbf .seg button')) b.onclick = () => { fbKind = b.dataset.k; for (const x of document.querySelectorAll('#fbf .seg button')) x.classList.toggle('on', x === b); };
