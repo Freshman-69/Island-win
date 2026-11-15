@@ -7,7 +7,11 @@
 <meta name="description" content="Island — жива пілюля вгорі екрана Windows: музика, сповіщення з відповіддю, файли на телефон через Telegram, нотатки, перекладач, інструменти для роботи, ігри й монітор системи. Безкоштовно.">
 <meta property="og:title" content="Island — динамічний острів для Windows">
 <meta property="og:description" content="Музика, сповіщення з відповіддю, файли на телефон і ще десятки дрібниць — у живій пілюлі вгорі екрана.">
-<meta property="og:image" content="img/today.png">
+<meta property="og:image" content="https://freshman-69.github.io/Island-win/img/today.png">
+<meta property="og:url" content="https://freshman-69.github.io/Island-win/"><meta property="og:type" content="website"><meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://freshman-69.github.io/Island-win/img/today.png">
+<link rel="canonical" href="https://freshman-69.github.io/Island-win/"><link rel="preload" as="image" href="img/today.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Island","operatingSystem":"Windows 10, Windows 11","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"UAH"},"inLanguage":"uk","url":"https://freshman-69.github.io/Island-win/","image":"https://freshman-69.github.io/Island-win/img/today.png","description":"Динамічний острів для Windows: музика, сповіщення з відповіддю, файли на телефон, нотатки й десятки інструментів."}</script>
 <meta name="theme-color" content="#08080b">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <style>
@@ -23,7 +27,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}svg.i{widt
 nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px) saturate(1.4);background:#08080bc4;border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:14px;height:64px}.brand{display:flex;align-items:center;gap:10px;font-weight:750;font-size:18px}.brand img{width:34px;height:34px;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}.brand:hover img{transform:rotate(-8deg) scale(1.08)}
 nav .links{margin-left:auto;display:flex;gap:24px;font-size:14.5px;color:var(--mute)}nav .links a{position:relative}nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--acc);transform:scaleX(0);transition:transform .25s}nav .links a:hover{color:var(--tx)}nav .links a:hover::after{transform:scaleX(1)}
-.nbtn{height:38px;padding:0 16px;border-radius:11px;background:var(--tx);color:#000;font-weight:650;font-size:14px;display:inline-flex;align-items:center;gap:8px}
+.nbtn{margin-left:14px;height:38px;padding:0 16px;border-radius:11px;background:var(--tx);color:#000;font-weight:650;font-size:14px;display:inline-flex;align-items:center;gap:8px}
 .hero{position:relative;padding:80px 0 30px;text-align:center}
 .stage{height:190px;display:flex;justify-content:center;align-items:flex-start;margin-bottom:26px}
 .isl{background:#000;color:#f2f2f2;border-radius:32px;box-shadow:0 0 0 1px #ffffff1f,0 30px 80px #000c,0 0 140px -40px var(--acc);overflow:hidden;transition:width .7s cubic-bezier(.3,1.25,.4,1),height .7s cubic-bezier(.3,1.25,.4,1),border-radius .7s;position:relative;width:250px;height:62px}
@@ -53,7 +57,7 @@ h1{font-size:clamp(40px,7vw,78px);line-height:1.02;margin:0 0 20px;letter-spacin
 .shot{margin:60px auto 0;max-width:980px;border-radius:30px;padding:10px;background:linear-gradient(180deg,#ffffff14,#ffffff05);box-shadow:0 50px 120px -30px #000,0 0 0 1px var(--line)}
 .ring{position:relative}.ring::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:conic-gradient(from var(--a,0deg),#8c7cff,#4ad6c4,#ff7ab6,#8c7cff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spinb 8s linear infinite;opacity:.75}
 @property --a{syntax:'<angle>';inherits:false;initial-value:0deg}@keyframes spinb{to{--a:360deg}}
-.shot img,.feat .img img{border-radius:20px}.tilt{transition:transform .25s ease-out;will-change:transform}
+.shot img,.feat .img img{border-radius:20px;width:100%;height:auto}.tilt{transition:transform .25s ease-out;will-change:transform}
 section{padding:90px 0}.eyebrow{color:var(--acc2);font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
 h2{font-size:clamp(30px,4.4vw,46px);line-height:1.1;margin:10px 0 14px;letter-spacing:-1.2px}.sub{color:var(--mute);font-size:18px;max-width:640px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:40px}
@@ -82,7 +86,15 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
 nav .links a.on{color:var(--tx)}nav .links a.on::after{transform:scaleX(1)}
 .faq details>p{overflow:hidden}.faq details[open]>p{animation:fOpen .35s ease}@keyframes fOpen{from{opacity:0;transform:translateY(-6px)}}
 .top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:14px;border:0;background:#14141ae6;backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px var(--line),0 10px 30px #0008;color:var(--tx);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none;z-index:30}.top.on{opacity:1;transform:none;pointer-events:auto}.top svg{width:20px;height:20px;transform:rotate(180deg)}
-section{content-visibility:auto;contain-intrinsic-size:auto 900px}
+section{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-top:64px}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:3px;border-radius:8px}
+.burger{display:none;margin-left:auto;width:40px;height:40px;border:0;border-radius:11px;background:#ffffff0c;color:var(--tx);cursor:pointer;place-items:center}.burger svg{width:20px;height:20px}
+.mnav{position:fixed;inset:64px 0 auto 0;z-index:19;background:#0b0b10f2;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:grid;padding:10px 24px 18px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}.mnav.on{opacity:1;transform:none;pointer-events:auto}.mnav a{padding:12px 4px;border-bottom:1px solid var(--line);font-size:17px}
+.priv{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}.priv div{background:var(--card);border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}.priv svg{width:26px;height:26px;color:var(--acc2)}.priv b{display:block;margin:12px 0 6px;font-size:16.5px}.priv p{margin:0;color:var(--mute);font-size:14.5px}
+.news ul{margin:10px 0 0;padding-left:20px}.news li{margin:6px 0}.news h3{margin:0;font-size:18px;color:var(--tx)}.news small{color:var(--mute)}
+.mdl{position:fixed;left:12px;right:12px;bottom:12px;z-index:25;display:none}
+@media (max-width:860px){.burger{display:grid}nav .nbtn{display:none}.priv{grid-template-columns:1fr 1fr}.mdl{display:flex;justify-content:center;transform:translateY(120%);transition:transform .35s}.mdl.on{transform:none}.mdl .btn{width:100%;justify-content:center;box-shadow:0 14px 40px -6px #000}.top{bottom:84px}}
+@media (max-width:520px){.priv{grid-template-columns:1fr}.demo button{padding:0 11px}}
 @media (max-width:860px){nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps,.fb{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding-top:50px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,h1 .w,.feat .img img,.shot img{opacity:1;transform:none;filter:none}}
 </style>
@@ -110,8 +122,9 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px}
 <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></symbol>
 </defs></svg>
 <nav><div class="wrap"><a class="brand" href="#"><img src="icon.svg" alt="">Island</a>
-<div class="links"><a href="#features">Можливості</a><a href="#tour">Огляд</a><a href="#install">Встановлення</a><a href="#faq">Питання</a><a href="#feedback">Відгук</a></div>
-<a class="nbtn dl" href="#"><svg class="i" style="width:16px;height:16px"><use href="#i-down"/></svg>Завантажити</a></div></nav>
+<div class="links"><a href="#features">Можливості</a><a href="#tour">Огляд</a><a href="#privacy">Безпека</a><a href="#install">Встановлення</a><a href="#faq">Питання</a><a href="#feedback">Відгук</a></div>
+<a class="nbtn dl" href="#"><svg class="i" style="width:16px;height:16px"><use href="#i-down"/></svg>Завантажити</a><button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></nav>
+<div class="mnav" id="mnav"><a href="#features">Можливості</a><a href="#tour">Огляд</a><a href="#privacy">Безпека</a><a href="#install">Встановлення</a><a href="#faq">Питання</a><a href="#feedback">Відгук</a></div>
 
 <header class="hero"><div class="wrap">
   <div class="stage"><div class="isl" id="isl" data-s="pill">
@@ -128,7 +141,7 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px}
   <div class="cta"><a class="btn main dl" href="#"><svg class="i"><use href="#i-down"/></svg>Завантажити безкоштовно</a><a class="btn ghost" href="#features">Що вміє Island</a></div>
   <div class="meta" id="ver">Windows 10 і 11</div>
   <div class="badges"><span>🇺🇦 Українською</span><span>10 мов інтерфейсу</span><span>Без реклами</span><span>Оновлюється сам</span><span>Підписані оновлення</span></div>
-  <div class="shot reveal ring tilt"><img src="img/today.png" alt="Головна панель Island: день, погода, найближчі справи, музика" loading="eager" decoding="async"></div>
+  <div class="shot reveal ring tilt"><img src="img/today.png" width="936" height="408" alt="Головна панель Island: день, погода, найближчі справи, музика" loading="eager" decoding="async"></div>
   <div class="stats"><div class="stat reveal" style="--d:0"><b data-n="60" data-suf="+">0</b><span>інструментів</span></div><div class="stat reveal" style="--d:1"><b data-n="10">0</b><span>мов інтерфейсу</span></div><div class="stat reveal" style="--d:2"><b data-n="2" data-suf=" ГБ">0</b><span>файл на телефон</span></div><div class="stat reveal" style="--d:3"><b data-n="0" data-suf=" ₴">0</b><span>назавжди, без реклами</span></div></div>
 </div></header>
 <div class="mq" aria-hidden="true"><div class="tr" id="mq"><span><svg class="i"><use href="#i-music"/></svg>Будь-який плеєр</span><span><svg class="i"><use href="#i-chat"/></svg>Відповіді в Telegram</span><span><svg class="i"><use href="#i-phone"/></svg>Файли до 2 ГБ</span><span><svg class="i"><use href="#i-note"/></svg>Нотатки з таблицями</span><span><svg class="i"><use href="#i-case"/></svg>Зарплата й ПДВ</span><span><svg class="i"><use href="#i-cpu"/></svg>Монітор системи</span><span><svg class="i"><use href="#i-game"/></svg>Ігровий режим</span><span><svg class="i"><use href="#i-code"/></svg>Git, SQL, JSON</span><span><svg class="i"><use href="#i-globe"/></svg>Перекладач</span><span><svg class="i"><use href="#i-timer"/></svg>Таймер і будильники</span><span><svg class="i"><use href="#i-spark"/></svg>Текст з екрана</span><span><svg class="i"><use href="#i-shield"/></svg>Підписані оновлення</span></div></div>
@@ -136,12 +149,12 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px}
 <section id="features"><div class="wrap">
   <div class="eyebrow reveal">Можливості</div><h2 class="reveal">Усе потрібне — в одному місці</h2><p class="sub reveal">Острів сидить над вкладками браузера, пропускає кліки, коли не потрібен, і розгортається, коли ви наводите курсор.</p>
   <div class="grid">
-    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-music"/></svg></span><b>Музика</b><p>Будь-який плеєр, обкладинка, хвиля в ритм, текст пісні й запуск Spotify чи YouTube Music одним кліком.</p></div>
+    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-music"/></svg></span><b>Музика</b><p>Будь-який плеєр, обкладинка, хвиля в ритм, текст пісні й вбудована медіатека: Spotify, YouTube Music, SoundCloud.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-chat"/></svg></span><b>Сповіщення й відповіді</b><p>Telegram з полем відповіді, сповіщення програм і живі події системи.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-phone"/></svg></span><b>Файли й текст на телефон</b><p>До 2 ГБ через «Збережене» Telegram з будь-якої мережі або через QR у Wi-Fi.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-note"/></svg></span><b>Нотатки</b><p>Заголовки, стилі, кольори, чеклісти й таблиці з рядками, стовпцями та Tab — як у нотатках iPhone.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-case"/></svg></span><b>Інструменти</b><p>Калькулятор, ПДВ, зарплата, сума прописом, курси НБУ, робочі дні — і ваші робочі програми поруч.</p></div>
-    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-cpu"/></svg></span><b>Монітор системи</b><p>Процесор, відеокарта, памʼять, диски й мережа з живими графіками.</p></div>
+    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-cpu"/></svg></span><b>Монітор системи</b><p>Процесор, відеокарта, памʼять, диски й мережа, програми з іконками — і закриття завислої програми одним кліком.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-game"/></svg></span><b>Ігри</b><p>Steam, Epic, GOG і свої лаунчери, друзі онлайн, безкоштовні ігри, ігровий режим.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-code"/></svg></span><b>Розробка</b><p>30+ інструментів у теках: веб, дані, SQL, Python, Git і Docker, безпека, мережа.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-globe"/></svg></span><b>Перекладач і час</b><p>Переклад наживо, світовий годинник, таймер, будильники, нагадування.</p></div>
@@ -152,22 +165,27 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px}
 <section id="tour" style="padding-top:20px"><div class="wrap">
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Головна</div><h2>Ваш день — одним поглядом</h2><p class="sub">Коли музика не грає, острів показує, що попереду: погоду й дощ, найближчі будильники та нагадування, непрочитану пошту й нові відео — і запускає музику одним кліком.</p>
     <ul><li>Погода зараз і попередження про дощ</li><li>Будильники, нагадування, події календаря</li><li>Щодня — нова порада про можливості</li></ul></div>
-    <div class="img reveal tilt"><img src="img/today.png" alt="Картка «Сьогодні»" loading="lazy" decoding="async"></div></div>
+    <div class="img reveal tilt"><img src="img/today.png" width="936" height="408" alt="Картка «Сьогодні»" loading="lazy" decoding="async"></div></div>
   <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Полиця</div><h2>Файли, нотатки й телефон — разом</h2><p class="sub">Перетягніть файли на острів — вони почекають. Поруч нотатки з повноцінним форматуванням, і все це — на телефон однією кнопкою.</p>
     <ul><li>Назва, заголовки, моно, жирний, курсив, підкреслення</li><li>Списки, чеклісти, цитати, таблиці, кольори й маркер</li><li>Надіслати в «Збережене» Telegram або через QR</li></ul></div>
-    <div class="img reveal tilt"><img src="img/notes.png" alt="Полиця з файлами й нотатками" loading="lazy" decoding="async"></div></div>
+    <div class="img reveal tilt"><img src="img/notes.png" width="936" height="496" alt="Полиця з файлами й нотатками" loading="lazy" decoding="async"></div></div>
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Сповіщення</div><h2>Відповідайте, не перемикаючи вікна</h2><p class="sub">Повідомлення Telegram зʼявляються на острові з полем відповіді. Серія повідомлень складається в одне, а чати без звуку лишаються тихими.</p>
     <ul><li>Вхід у Telegram за QR-кодом</li><li>Скільки показувати сповіщення — обираєте ви</li><li>Історія в центрі сповіщень</li></ul></div>
-    <div class="img reveal tilt"><img src="img/toast.png" alt="Повідомлення Telegram з полем відповіді" loading="lazy" decoding="async"></div></div>
+    <div class="img reveal tilt"><img src="img/toast.png" width="702" height="124" alt="Повідомлення Telegram з полем відповіді" loading="lazy" decoding="async"></div></div>
   <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Інструменти</div><h2>Для роботи, навчання й побуту</h2><p class="sub">Калькулятор, зарплата «на руки», ФОП, ПДВ і сума прописом, курси НБУ, перевірка IBAN, середній бал, робочі дні, римські числа, комуналка, пальне, поділ рахунку. Над інструментами — панель ваших робочих програм.</p></div>
-    <div class="img reveal tilt"><img src="img/tools.png" alt="Інструменти: зарплата на руки" loading="lazy" decoding="async"></div></div>
+    <div class="img reveal tilt"><img src="img/tools.png" width="936" height="498" alt="Інструменти: зарплата на руки" loading="lazy" decoding="async"></div></div>
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Система</div><h2>Що відбувається з вашим ПК</h2><p class="sub">Навантаження процесора, відеокарти, памʼяті й дисків з живими графіками, вільне місце й програми, що гальмують.</p>
     <ul><li>Сповіщення, коли ПК перевантажений або закінчується місце</li><li>Завершити програму одним кліком</li></ul></div>
-    <div class="img reveal tilt"><img src="img/system.png" alt="Монітор системи" loading="lazy" decoding="async"></div></div>
+    <div class="img reveal tilt"><img src="img/system.png" width="936" height="607" alt="Монітор системи" loading="lazy" decoding="async"></div></div>
   <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Розробка</div><h2>Інструменти розробника поруч</h2><p class="sub">Форматування SQL і JSON, CSV ⇄ JSON, TypeScript-інтерфейси й Python-класи, шпаргалки Git і Docker, SemVer, екранування, Markdown, хеші, підмережі, cron, кольори з контрастом WCAG, локальні сервери — і запити Claude Code з кнопками.</p></div>
-    <div class="img reveal tilt"><img src="img/dev.png" alt="Форматування SQL" loading="lazy" decoding="async"></div></div>
+    <div class="img reveal tilt"><img src="img/dev.png" width="936" height="538" alt="Форматування SQL" loading="lazy" decoding="async"></div></div>
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Перекладач</div><h2>Переклад, поки ви пишете</h2><p class="sub">Вставте текст — переклад зʼявиться сам. 12 мов, автовизначення, заміна оригіналу одним кліком.</p></div>
-    <div class="img reveal tilt"><img src="img/text.png" alt="Перекладач" loading="lazy" decoding="async"></div></div>
+    <div class="img reveal tilt"><img src="img/text.png" width="936" height="358" alt="Перекладач" loading="lazy" decoding="async"></div></div>
+</div></section>
+
+<section id="privacy"><div class="wrap">
+  <div class="eyebrow reveal">Безпека й приватність</div><h2 class="reveal">Ваші дані лишаються у вас</h2><p class="sub reveal">Island працює на вашому комп’ютері. Ми не збираємо листи, файли чи нотатки — лише анонімні лічильники, які можна вимкнути.</p>
+  <div class="priv"><div class="reveal" style="--d:0"><svg class="i"><use href="#i-shield"/></svg><b>Вхід у вашому браузері</b><p>Steam і Google відкриваються у вашому браузері. Island не бачить паролів.</p></div><div class="reveal" style="--d:1"><svg class="i"><use href="#i-spark"/></svg><b>Підписані оновлення</b><p>Кожен інсталятор і налаштування перевіряються цифровим підписом автора.</p></div><div class="reveal" style="--d:2"><svg class="i"><use href="#i-phone"/></svg><b>Файли — лише вам</b><p>Передача йде у ваше «Збережене» Telegram або напряму через вашу Wi-Fi мережу.</p></div><div class="reveal" style="--d:3"><svg class="i"><use href="#i-note"/></svg><b>Ключі зашифровані</b><p>Токени й сесії зберігаються зашифрованими Windows лише на цьому ПК.</p></div></div>
 </div></section>
 
 <section id="install" style="background:var(--bg2)"><div class="wrap">
@@ -197,6 +215,7 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px}
 
 <section class="final"><div class="wrap"><h2 class="reveal">Спробуйте Island</h2><p class="sub reveal" style="margin:0 auto 30px">Безкоштовно для Windows 10 і 11.</p><a class="btn main dl reveal" href="#"><svg class="i"><use href="#i-down"/></svg>Завантажити</a></div></section>
 
+<div class="mdl" id="mdl"><a class="btn main dl" href="#"><svg class="i"><use href="#i-down"/></svg>Завантажити безкоштовно</a></div>
 <button class="top" id="top" aria-label="Вгору"><svg class="i"><use href="#i-down"/></svg></button>
 <footer><div class="wrap"><span class="brand"><img src="icon.svg" alt="">Island · зроблено в Україні 🇺🇦</span><span><a id="gh" href="#">GitHub</a> · <a id="rel" href="#">Усі версії</a></span></div></footer>
 <script>
@@ -208,7 +227,11 @@ for (const a of document.querySelectorAll('.dl')) a.href = base + '/releases/lat
 fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`).then(r => r.ok ? r.json() : Promise.reject()).then(r => {
   const a = (r.assets || []).find(x => /Setup.*\.exe$/i.test(x.name)); if (a) for (const b of document.querySelectorAll('.dl')) b.href = a.browser_download_url;
   const v = r.tag_name.replace(/^v/, ''); document.getElementById('ver').textContent = `Версія ${v}${a ? ' · ' + Math.round(a.size / 1048576) + ' МБ' : ''} · Windows 10 і 11`;
-  document.getElementById('news').textContent = `Island ${v} — ${new Date(r.published_at).toLocaleDateString('uk', { day: 'numeric', month: 'long', year: 'numeric' })}\n\n` + String(r.body || '').replace(/\n*(sha256|sig): \S+/g, '').replace(/\*\*/g, '').replace(/^#+\s*/gm, '').trim();
+  const news = document.getElementById('news'), esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const lines = String(r.body || '').replace(/\n*(sha256|sig): \S+/g, '').replace(/\*\*/g, '').split('\n').map(x => x.trim()).filter(Boolean);
+  const items = lines.filter(x => /^[-*•]\s+/.test(x)).map(x => '<li>' + esc(x.replace(/^[-*•]\s+/, '')) + '</li>');
+  news.style.whiteSpace = 'normal';
+  news.innerHTML = `<h3>Island ${esc(v)}</h3><small>${new Date(r.published_at).toLocaleDateString('uk', { day: 'numeric', month: 'long', year: 'numeric' })}</small>` + (items.length ? '<ul>' + items.join('') + '</ul>' : '<p>' + esc(lines.join(' ')) + '</p>');
 }).catch(() => { document.getElementById('news').textContent = 'Нова версія ось-ось зʼявиться.'; });
 const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
 // hero island: plays a little story; the chips under it switch states by hand (autoplay resumes after a pause)
@@ -234,6 +257,10 @@ document.querySelectorAll('[data-n]').forEach(el => cio.observe(el));
 const links = [...document.querySelectorAll('nav .links a')], nio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) for (const a of links) a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); }), { rootMargin: '-45% 0px -50% 0px' });
 for (const a of links) { const sec = document.querySelector(a.getAttribute('href')); if (sec) nio.observe(sec); }
 // back to top
+const burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+burger.onclick = () => { const on = !mnav.classList.contains('on'); mnav.classList.toggle('on', on); burger.setAttribute('aria-expanded', on); };
+mnav.addEventListener('click', e => { if (e.target.closest('a')) { mnav.classList.remove('on'); burger.setAttribute('aria-expanded', false); } });
+const mdl = document.getElementById('mdl');
 const topBtn = document.getElementById('top'); topBtn.onclick = () => scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' });
 const hc = () => { document.getElementById('hclock').textContent = new Date().toLocaleTimeString('uk', { hour: '2-digit', minute: '2-digit' }); }; hc(); setInterval(hc, 10000);
 for (const c of document.querySelectorAll('.card')) c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
@@ -241,7 +268,7 @@ if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:
   el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(1400px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`; });
   el.addEventListener('mouseleave', () => { el.style.transform = ''; });
 }
-let sTick = false; addEventListener('scroll', () => { if (sTick) return; sTick = true; requestAnimationFrame(() => { sTick = false; const h = document.documentElement; document.getElementById('prog').style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`; topBtn.classList.toggle('on', h.scrollTop > 900); }); }, { passive: true });
+let sTick = false; addEventListener('scroll', () => { if (sTick) return; sTick = true; requestAnimationFrame(() => { sTick = false; const h = document.documentElement; document.getElementById('prog').style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`; topBtn.classList.toggle('on', h.scrollTop > 900); mdl.classList.toggle('on', h.scrollTop > 700 && h.scrollTop < h.scrollHeight - h.clientHeight - 400); }); }, { passive: true });
 let fbKind = 'idea', fbKey = '';
 fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/island.json?t=${Date.now()}`).then(r => r.json()).then(j => { fbKey = j.feedbackKey || ''; if (!fbKey) { document.getElementById('fbs').disabled = true; document.getElementById('fbm').textContent = 'Форма відгуків скоро запрацює.'; } }).catch(() => {});
 for (const b of document.querySelectorAll('#fbf .seg button')) b.onclick = () => { fbKind = b.dataset.k; for (const x of document.querySelectorAll('#fbf .seg button')) x.classList.toggle('on', x === b); };
