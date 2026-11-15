@@ -68,13 +68,31 @@ h2{font-size:clamp(30px,4.4vw,46px);line-height:1.1;margin:10px 0 14px;letter-sp
 .final{text-align:center;padding:100px 0 110px;position:relative}.final .glow{top:0;height:500px}
 footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:13.5px}footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.9,.25,1)}.reveal.in{opacity:1;transform:none}
-@media (max-width:860px){nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps{grid-template-columns:1fr}.shot{transform:none}}
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden}.orbs i{position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(90px);opacity:.18;animation:orb 26s ease-in-out infinite}
+.orbs i:nth-child(1){background:#8c7cff;left:-120px;top:10%}.orbs i:nth-child(2){background:#4ad6c4;right:-160px;top:40%;animation-delay:-9s}.orbs i:nth-child(3){background:#ff7ab6;left:30%;top:75%;animation-delay:-17s}
+@keyframes orb{33%{transform:translate(120px,-80px) scale(1.15)}66%{transform:translate(-90px,70px) scale(.9)}}
+.marquee{overflow:hidden;margin-top:46px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee div{display:flex;gap:10px;width:max-content;animation:mq 40s linear infinite}.marquee span{padding:9px 16px;border-radius:999px;background:#ffffff0a;box-shadow:inset 0 0 0 1px var(--line);color:#d6d6e0;font-size:14px;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+.tilt{transition:transform .25s ease-out;transform-style:preserve-3d;will-change:transform}
+.ring{position:relative;border-radius:26px}.ring::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:conic-gradient(from var(--a,0deg),#8c7cff,#4ad6c4,#ff7ab6,#8c7cff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spinb 8s linear infinite;opacity:.7}
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}@keyframes spinb{to{--a:360deg}}
+.btn.main{position:relative;overflow:hidden}.btn.main::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffff55 50%,transparent 70%);transform:translateX(-100%);animation:shine 3.6s ease-in-out infinite}
+@keyframes shine{60%,100%{transform:translateX(100%)}}
+.count{font-variant-numeric:tabular-nums}
+.fb{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}.fbf{background:var(--card);border-radius:22px;padding:24px;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:12px}
+.fbf .seg{display:flex;gap:6px}.fbf .seg button{flex:1;height:40px;border-radius:12px;border:0;background:#ffffff0c;color:var(--mute);font:600 14px inherit;cursor:pointer}.fbf .seg button.on{background:#8c7cff33;color:#fff;box-shadow:inset 0 0 0 1px #8c7cff88}
+.fbf textarea,.fbf input{width:100%;border-radius:12px;border:1px solid var(--line);background:#0b0b0f;color:var(--tx);padding:12px 14px;font:15px inherit;outline:none;resize:vertical}.fbf textarea{min-height:120px}.fbf textarea:focus,.fbf input:focus{border-color:#8c7cff}
+.fbf button.send{height:50px;border:0;border-radius:14px;background:linear-gradient(135deg,#9d8fff,#7a68ff);color:#fff;font:700 16px inherit;cursor:pointer}.fbf button.send:disabled{opacity:.5;cursor:default}
+.fbmsg{min-height:22px;font-size:14px}.fbmsg.ok{color:#7ff0a8}.fbmsg.err{color:#ff8a8a}
+@media (max-width:860px){.fb{grid-template-columns:1fr}nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps{grid-template-columns:1fr}.shot{transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div class="orbs"><i></i><i></i><i></i></div>
 <nav><div class="wrap"><a class="brand" href="#"><span class="logo"><i></i><i></i></span>Island</a>
-<div class="links"><a href="#features">Можливості</a><a href="#phone">Телефон ⇄ ПК</a><a href="#install">Встановлення</a><a href="#faq">Питання</a></div>
+<div class="links"><a href="#features">Можливості</a><a href="#phone">Телефон ⇄ ПК</a><a href="#install">Встановлення</a><a href="#faq">Питання</a><a href="#feedback">Відгук</a></div>
 <a class="nbtn dl" href="#">⬇ Завантажити</a></div></nav>
 
 <header class="hero"><div class="glow"></div><div class="wrap">
@@ -84,7 +102,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
   <div class="cta"><a class="btn main dl" href="#">⬇ Завантажити безкоштовно</a><a class="btn ghost" href="#features">Що вміє Island</a></div>
   <div class="meta" id="ver">Windows 10 і 11</div>
   <div class="badges"><span>🇺🇦 Українською</span><span>10 мов інтерфейсу</span><span>Без реклами</span><span>Оновлюється сам</span></div>
-  <div class="shot reveal"><img src="img/home.png" alt="Головна панель Island: плеєр, інструменти, пошта та YouTube" loading="eager"></div>
+  <div class="marquee"><div><span>🎵 Музика з текстом пісень</span><span>💬 Відповідь у Telegram</span><span>📱 Файли на телефон</span><span>📋 Буфер з історією</span><span>🌍 Перекладач</span><span>⏰ Будильники й таймери</span><span>🎮 Steam · Epic · GOG</span><span>🛠️ 25+ інструментів розробника</span><span>📊 Монітор системи</span><span>🧾 Сума прописом і ПДВ</span><span>🔔 Живі події</span><span>🌐 10 мов</span><span>🎵 Музика з текстом пісень</span><span>💬 Відповідь у Telegram</span><span>📱 Файли на телефон</span><span>📋 Буфер з історією</span><span>🌍 Перекладач</span><span>⏰ Будильники й таймери</span><span>🎮 Steam · Epic · GOG</span><span>🛠️ 25+ інструментів розробника</span><span>📊 Монітор системи</span><span>🧾 Сума прописом і ПДВ</span><span>🔔 Живі події</span><span>🌐 10 мов</span></div></div>
+  <div class="shot reveal ring tilt"><img src="img/home.png" alt="Головна панель Island: плеєр, інструменти, пошта та YouTube" loading="eager"></div>
 </div></header>
 
 <section id="features"><div class="wrap">
@@ -98,6 +117,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
     <div class="card reveal"><span class="ic">🌍</span><b>Перекладач і світовий час</b><p>Переклад наживо 12 мовами, годинник для міст, таймер, будильники, нагадування.</p></div>
     <div class="card reveal"><span class="ic">🎮</span><b>Ігри</b><p>Steam, Epic, GOG і свої лаунчери. Друзі онлайн, безкоштовні ігри тижня.</p></div>
     <div class="card reveal"><span class="ic">🛠️</span><b>Для розробників</b><p>25+ інструментів у теках: веб, SQL, Python, хеші, мережа, cron. Запити Claude Code з кнопками.</p></div>
+    <div class="card reveal"><span class="ic">📊</span><b>Система</b><p>Процесор, відеокарта, памʼять, диски й мережа з живими графіками.</p></div>
+    <div class="card reveal"><span class="ic">🧾</span><b>Офіс</b><p>ПДВ, сума прописом, курси НБУ, IBAN, оцінки, дати й робочі дні.</p></div>
     <div class="card reveal"><span class="ic">🔔</span><b>Живі події</b><p>Завантаження, флешки, Bluetooth, живлення, нові листи, події календаря.</p></div>
   </div>
 </div></section>
@@ -105,15 +126,20 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
 <section id="phone" style="padding-top:20px"><div class="wrap">
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Телефон ⇄ ПК</div><h2>Скинути файл на телефон — одна кнопка</h2><p class="sub">Надсилайте з телефона в «Збережене» Telegram — фото й файли з’являться на полиці острова. З ПК — так само назад. Без кабелів і спільної мережі.</p>
     <ul><li>Файли до 2 ГБ, текст — одразу в буфер обміну</li><li>Нотатки зі списками справ — на телефон одним кліком</li><li>Без Telegram — через QR-код у вашій Wi-Fi мережі</li></ul></div>
-    <div class="img reveal"><img src="img/shelf.png" alt="Полиця: файли, нотатки і кнопка «На телефон»" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/shelf.png" alt="Полиця: файли, нотатки і кнопка «На телефон»" loading="lazy"></div></div>
   <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Сповіщення</div><h2>Відповідайте, не перемикаючи вікна</h2><p class="sub">Повідомлення з Telegram з’являються на острові з полем відповіді. Discord, Gmail та інші програми — теж тут, але чати без звуку лишаються тихими.</p>
     <ul><li>Вхід у Telegram через QR — за 10 секунд</li><li>Серія повідомлень — один тост із лічильником</li><li>«Не турбувати» і тиша під час фокус-таймера</li></ul></div>
-    <div class="img reveal"><img src="img/toast.png" alt="Сповіщення Telegram з полем відповіді" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/toast.png" alt="Сповіщення Telegram з полем відповіді" loading="lazy"></div></div>
   <div class="feat"><div class="txt reveal"><div class="eyebrow">Для розробників</div><h2>Інструменти — на відстані наведення</h2><p class="sub">Форматування SQL і JSON, CSV ⇄ JSON, генерація TypeScript-інтерфейсів і Python-класів, хеші, підмережі, cron, кольори з контрастом WCAG — і запити Claude Code з кнопками ✓/✕.</p>
     <ul><li>Теки: Веб, Дані, Бази даних, Python, Безпека, Мережа</li><li>Локальні сервери з портами — відкрити чи зупинити</li><li>Останні проєкти VS Code</li></ul></div>
-    <div class="img reveal"><img src="img/dev.png" alt="Розробка: форматування SQL" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/dev.png" alt="Розробка: форматування SQL" loading="lazy"></div></div>
+  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Система</div><h2>Що відбувається з вашим ПК</h2><p class="sub">Процесор, відеокарта, памʼять, диски й мережа — з живими графіками. Яка програма гальмує — видно одразу, а завершити її можна одним кліком.</p>
+    <ul><li>Навантаження CPU, GPU, RAM і дисків</li><li>Вільне місце на кожному диску</li><li>Сповіщення, коли ПК перевантажений або закінчується місце</li></ul></div>
+    <div class="img reveal tilt"><img src="img/system.png" alt="Монітор системи" loading="lazy"></div></div>
+  <div class="feat"><div class="txt reveal"><div class="eyebrow">Офіс</div><h2>Для бухгалтерів, вчителів і всіх, хто працює з документами</h2><p class="sub">ПДВ і сума прописом, курси НБУ, перевірка IBAN, ЄДРПОУ та ІПН, кредитний калькулятор, середній бал, випадковий учень, дати й робочі дні, QR-коди, транслітерація.</p></div>
+    <div class="img reveal tilt"><img src="img/office.png" alt="Офіс: ПДВ і сума прописом" loading="lazy"></div></div>
   <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Щодня</div><h2>Перекладач, час і таймери</h2><p class="sub">Пишіть — переклад з’являється сам. Таймер з колесами як на iPhone, будильники з днями тижня, секундомір і нагадування звичайними словами: «подзвонити мамі завтра о 9».</p></div>
-    <div class="img reveal"><img src="img/text.png" alt="Перекладач Island" loading="lazy"></div></div>
+    <div class="img reveal tilt"><img src="img/text.png" alt="Перекладач Island" loading="lazy"></div></div>
 </div></section>
 
 <section id="install" style="background:var(--bg2)"><div class="wrap">
@@ -134,6 +160,13 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
   </div>
 </div></section>
 
+<section id="feedback" style="background:var(--bg2)"><div class="wrap fb">
+  <div class="reveal"><div class="eyebrow">Відгук</div><h2>Ідея чи помилка? Напишіть</h2><p class="sub">Автор читає кожен відгук. Пошта не потрібна — залиште контакт, лише якщо хочете отримати відповідь. Відгук також можна надіслати з самої програми: «Налаштування → Про програму».</p></div>
+  <form class="fbf reveal" id="fbf"><div class="seg"><button type="button" class="on" data-k="idea">💡 Ідея</button><button type="button" data-k="bug">🐞 Помилка</button><button type="button" data-k="other">💬 Інше</button></div>
+    <textarea id="fbt" placeholder="Що покращити або що не працює?" maxlength="3000" required></textarea><input id="fbc" placeholder="Контакт для відповіді (необов’язково)" maxlength="120">
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"><button class="send" id="fbs" type="submit">Надіслати</button><div class="fbmsg" id="fbm"></div></form>
+</div></section>
+
 <section class="final"><div class="glow"></div><div class="wrap"><h2 class="reveal">Спробуйте Island</h2><p class="sub reveal" style="margin:0 auto 30px">Безкоштовно для Windows 10 і 11.</p><a class="btn main dl reveal" href="#">⬇ Завантажити</a></div></section>
 
 <footer><div class="wrap"><span>Island · зроблено в Україні 🇺🇦</span><span><a id="gh" href="#">GitHub</a> · <a id="rel" href="#">Усі версії</a></span></div></footer>
@@ -150,6 +183,28 @@ fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`).then(r =>
   document.getElementById('ver').textContent = `Версія ${v}${a ? ' · ' + Math.round(a.size / 1048576) + ' МБ' : ''} · Windows 10 і 11`;
   document.getElementById('news').textContent = `Island ${v} — ${new Date(r.published_at).toLocaleDateString('uk', { day: 'numeric', month: 'long', year: 'numeric' })}\n\n` + String(r.body || '').replace(/\n*(sha256|sig): \S+/g, '').replace(/\*\*/g, '').replace(/^#+\s*/gm, '').trim();
 }).catch(() => { document.getElementById('news').textContent = 'Перша версія ось-ось з’явиться.'; });
+// 3D tilt of screenshots under the cursor
+if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) for (const el of document.querySelectorAll('.tilt')) {
+  el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(1400px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-4px)`; });
+  el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+}
+// feedback: the form key comes from the owner's signed island.json; the e-mail address is never on this page
+let fbKind = 'idea', fbKey = '';
+fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/island.json?t=${Date.now()}`).then(r => r.json()).then(j => { fbKey = j.feedbackKey || ''; if (!fbKey) { document.getElementById('fbs').disabled = true; document.getElementById('fbm').textContent = 'Форма відгуків скоро запрацює.'; } }).catch(() => {});
+for (const b of document.querySelectorAll('#fbf .seg button')) b.onclick = () => { fbKind = b.dataset.k; for (const x of document.querySelectorAll('#fbf .seg button')) x.classList.toggle('on', x === b); };
+document.getElementById('fbf').addEventListener('submit', async e => {
+  e.preventDefault(); const m = document.getElementById('fbm'), btn = document.getElementById('fbs'), t = document.getElementById('fbt').value.trim();
+  if (t.length < 5) { m.className = 'fbmsg err'; m.textContent = 'Напишіть трохи більше.'; return; }
+  if (Date.now() - (+localStorage.fbAt || 0) < 60e3) { m.className = 'fbmsg err'; m.textContent = 'Зачекайте хвилину перед наступним відгуком.'; return; }
+  btn.disabled = true; m.className = 'fbmsg'; m.textContent = 'Надсилаю…';
+  try {
+    const kind = { idea: 'Ідея', bug: 'Помилка', other: 'Інше' }[fbKind];
+    const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: fbKey, subject: 'Island: відгук — ' + kind, from_name: 'Сайт Island', message: t, kind, contact: document.getElementById('fbc').value.trim(), botcheck: document.querySelector('[name=botcheck]').checked }) });
+    const j = await r.json(); if (!j.success) throw new Error(j.message);
+    localStorage.fbAt = Date.now(); e.target.reset(); m.className = 'fbmsg ok'; m.textContent = 'Дякуємо! Відгук надіслано.';
+  } catch (err) { m.className = 'fbmsg err'; m.textContent = 'Не вдалося надіслати. Спробуйте пізніше.'; }
+  btn.disabled = false;
+});
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
