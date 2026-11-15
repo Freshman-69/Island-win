@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Island — динамічний острів для Windows</title>
+<meta name="description" content="Рідка пілюля вгорі екрана: музика з текстом пісень, сповіщення з відповіддю, файли на телефон, буфер, перекладач, ігри й інструменти розробника.">
+<style>
+:root{--bg:#0b0b0e;--card:#16161b;--line:#ffffff14;--tx:#f2f2f4;--mute:#9a9aa6;--acc:#8b7cff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Segoe UI Variable","Segoe UI",system-ui,sans-serif}
+a{color:inherit}.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{padding:22px 0;display:flex;align-items:center;gap:12px}.logo{width:44px;height:26px;border-radius:13px;background:#000;box-shadow:0 0 0 1px #ffffff22;display:grid;place-items:center}.logo i{width:6px;height:9px;border-radius:3px;background:#fff;margin:0 2px}
+header b{font-size:18px}header nav{margin-left:auto;display:flex;gap:18px;font-size:14px;color:var(--mute)}header nav a{text-decoration:none}header nav a:hover{color:var(--tx)}
+.hero{text-align:center;padding:70px 0 40px}
+.pill{margin:0 auto 46px;width:min(560px,92%);height:62px;border-radius:31px;background:#000;box-shadow:0 20px 60px #0009,0 0 0 1px #ffffff1a,0 0 90px -20px var(--acc);display:flex;align-items:center;gap:14px;padding:0 22px;animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.025);box-shadow:0 26px 70px #000a,0 0 0 1px #ffffff22,0 0 120px -18px var(--acc)}}
+.pill .art{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#ff6b9a,#8b7cff)}.pill .t{flex:1;text-align:left;font-size:14px}.pill .t small{display:block;color:var(--mute);font-size:12px}
+.bars{display:flex;gap:3px;align-items:end;height:22px}.bars i{width:4px;border-radius:2px;background:var(--acc);animation:b 1s ease-in-out infinite}.bars i:nth-child(2){animation-delay:.2s}.bars i:nth-child(3){animation-delay:.4s}.bars i:nth-child(4){animation-delay:.1s}@keyframes b{0%,100%{height:5px}50%{height:22px}}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.08;margin:0 0 16px;letter-spacing:-1.5px}h1 span{background:linear-gradient(90deg,#fff,#b6acff);-webkit-background-clip:text;color:transparent}
+.lead{color:var(--mute);font-size:19px;max-width:640px;margin:0 auto 32px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:14px;background:var(--acc);color:#0b0b0e;font-weight:700;text-decoration:none;font-size:16px}.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--tx);box-shadow:inset 0 0 0 1px var(--line)}.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ver{color:var(--mute);font-size:13px;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:60px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}.card b{display:block;font-size:17px;margin:10px 0 6px}.card p{margin:0;color:var(--mute);font-size:14.5px}.card .ic{font-size:26px}
+h2{font-size:30px;margin:70px 0 10px;letter-spacing:-.5px}.steps{counter-reset:s;display:grid;gap:12px;margin:20px 0 80px}.steps div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px 18px 64px;position:relative}
+.steps div::before{counter-increment:s;content:counter(s);position:absolute;left:20px;top:16px;width:30px;height:30px;border-radius:50%;background:#ffffff12;display:grid;place-items:center;font-weight:700}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><span class="logo"><i></i><i></i></span><b>Island</b><nav><a href="#features">Можливості</a><a href="#install">Встановлення</a><a id="gh" href="#">GitHub</a></nav></header>
+<section class="hero">
+  <div class="pill"><span class="art"></span><span class="t">Нічний трек<small>Улюблений виконавець</small></span><span class="bars"><i></i><i></i><i></i><i></i></span></div>
+  <h1><span>Динамічний острів</span><br>для Windows</h1>
+  <p class="lead">Музика з текстом пісень, сповіщення з відповіддю в один рядок, файли на телефон з будь-якої мережі. Усе в рідкій пілюлі вгорі екрана.</p>
+  <div class="cta"><a class="btn" id="dl" href="#">⬇ Завантажити для Windows</a><a class="btn ghost" href="#features">Що вміє</a></div>
+  <div class="ver" id="ver">Windows 10 і 11 · безкоштовно</div>
+</section>
+<section id="features" class="grid">
+  <div class="card"><span class="ic">🎵</span><b>Музика</b><p>Будь-який плеєр, обкладинка, хвиля в ритм, синхронний текст пісні, ♥ у Spotify.</p></div>
+  <div class="card"><span class="ic">💬</span><b>Сповіщення</b><p>Telegram з відповіддю прямо з острова, Discord, Gmail. Серії повідомлень не заважають.</p></div>
+  <div class="card"><span class="ic">📱</span><b>Телефон ⇄ ПК</b><p>Файли до 2 ГБ і текст через ваше «Збережене» в Telegram або QR-код у Wi-Fi.</p></div>
+  <div class="card"><span class="ic">🗂️</span><b>Полиця й нотатки</b><p>Перетягніть файли на острів, вони почекають. Нотатки одним кліком на телефон.</p></div>
+  <div class="card"><span class="ic">🎮</span><b>Ігри</b><p>Steam, Epic, GOG і свої лаунчери, друзі онлайн, безкоштовні ігри тижня.</p></div>
+  <div class="card"><span class="ic">🛠️</span><b>Для розробників</b><p>25+ інструментів: веб, JSON, SQL, Python, хеші, мережа, cron. Запити Claude Code з кнопками.</p></div>
+  <div class="card"><span class="ic">🌍</span><b>Перекладач і час</b><p>Переклад наживо, світовий час, таймер, будильники, нагадування звичайною мовою.</p></div>
+  <div class="card"><span class="ic">🎛️</span><b>Керування</b><p>Wi-Fi, Bluetooth, гучність, яскравість, «Не турбувати» — без пошуку в параметрах.</p></div>
+  <div class="card"><span class="ic">🔒</span><b>Приватно</b><p>Усе працює на вашому ПК. Ключі й сесії зашифровані Windows і нікуди не надсилаються.</p></div>
+</section>
+<h2 id="install">Встановлення</h2>
+<div class="steps">
+  <div>Завантажте <b>Island-Setup.exe</b> кнопкою вище.</div>
+  <div>Запустіть. Поки програма без цифрового підпису, Windows покаже попередження: «Докладніше» → «Все одно запустити».</div>
+  <div>Острів з’явиться вгорі екрана. Нові версії він запропонує встановити сам.</div>
+</div>
+</div>
+<footer>Island · зроблено в Україні 🇺🇦</footer>
+<script>
+// owner/repo from the GitHub Pages address: https://OWNER.github.io/REPO/
+const owner = location.hostname.split('.')[0], repo = location.pathname.split('/').filter(Boolean)[0] || '';
+const base = owner && repo ? `https://github.com/${owner}/${repo}` : '#';
+document.getElementById('gh').href = base;
+document.getElementById('dl').href = base + '/releases/latest';
+if (owner && repo) fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`).then(r => r.json()).then(r => {
+  const a = (r.assets || []).find(x => /Setup.*\.exe$/i.test(x.name));
+  if (a) { document.getElementById('dl').href = a.browser_download_url; document.getElementById('ver').textContent = `Версія ${r.tag_name.replace(/^v/, '')} · ${(a.size / 1048576).toFixed(0)} МБ · Windows 10 і 11`; }
+}).catch(() => {});
+</script>
+</body>
+</html>
