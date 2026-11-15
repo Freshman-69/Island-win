@@ -96,7 +96,8 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-
 @media (max-width:860px){.burger{display:grid}nav .nbtn{display:none}.priv{grid-template-columns:1fr 1fr}.mdl{display:flex;justify-content:center;transform:translateY(120%);transition:transform .35s}.mdl.on{transform:none}.mdl .btn{width:100%;justify-content:center;box-shadow:0 14px 40px -6px #000}.top{bottom:84px}}
 @media (max-width:520px){.priv{grid-template-columns:1fr}.demo button{padding:0 11px}}
 @media (max-width:860px){nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps,.fb{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding-top:50px}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,h1 .w,.feat .img img,.shot img{opacity:1;transform:none;filter:none}}
+/* "reduce motion" (e.g. Windows animation effects off): keep calm fades and the island demo, drop big movement */
+@media (prefers-reduced-motion:reduce){.orbs i,.btn.main::after,.ring::before{animation:none!important}.reveal{transform:none;transition:opacity .6s}h1 .w{transform:none;filter:none;animation-duration:.6s}.tilt{transform:none!important}.mq .tr{animation-duration:90s}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -251,7 +252,7 @@ document.querySelectorAll('.steps .step').forEach((c, i) => c.style.setProperty(
 // images fade in once decoded
 for (const img of document.querySelectorAll('.feat .img img,.shot img')) { if (img.complete) img.classList.add('ok'); else img.addEventListener('load', () => img.classList.add('ok'), { once: true }); img.addEventListener('error', () => img.classList.add('ok'), { once: true }); }
 // count-up numbers
-const cio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; cio.unobserve(e.target); const el = e.target, n = +el.dataset.n, suf = el.dataset.suf || ''; if (RM || !n) { el.textContent = n + suf; return; } const t0 = performance.now(); (function f(t) { const k = Math.min(1, (t - t0) / 1400), v = Math.round(n * (1 - Math.pow(1 - k, 3))); el.textContent = v + suf; if (k < 1) requestAnimationFrame(f); })(t0); }), { threshold: .6 });
+const cio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; cio.unobserve(e.target); const el = e.target, n = +el.dataset.n, suf = el.dataset.suf || ''; if (!n) { el.textContent = n + suf; return; } const t0 = performance.now(); (function f(t) { const k = Math.min(1, (t - t0) / 1400), v = Math.round(n * (1 - Math.pow(1 - k, 3))); el.textContent = v + suf; if (k < 1) requestAnimationFrame(f); })(t0); }), { threshold: .6 });
 document.querySelectorAll('[data-n]').forEach(el => cio.observe(el));
 // nav: highlight the section you are reading
 const links = [...document.querySelectorAll('nav .links a')], nio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) for (const a of links) a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); }), { rootMargin: '-45% 0px -50% 0px' });
