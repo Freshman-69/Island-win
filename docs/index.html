@@ -4,68 +4,154 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Island — динамічний острів для Windows</title>
-<meta name="description" content="Рідка пілюля вгорі екрана: музика з текстом пісень, сповіщення з відповіддю, файли на телефон, буфер, перекладач, ігри й інструменти розробника.">
+<meta name="description" content="Island — рідка пілюля вгорі екрана Windows: музика, сповіщення з відповіддю, файли на телефон через Telegram, перекладач, ігри й інструменти розробника. Безкоштовно.">
+<meta property="og:title" content="Island — динамічний острів для Windows">
+<meta property="og:description" content="Музика, сповіщення з відповіддю, файли на телефон і ще десятки дрібниць — у пілюлі вгорі екрана.">
+<meta property="og:image" content="img/home.png">
+<meta name="theme-color" content="#08080b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='18' width='56' height='28' rx='14' fill='%23000'/%3E%3Crect x='22' y='26' width='6' height='12' rx='3' fill='%23fff'/%3E%3Crect x='36' y='26' width='6' height='12' rx='3' fill='%23fff'/%3E%3C/svg%3E">
 <style>
-:root{--bg:#0b0b0e;--card:#16161b;--line:#ffffff14;--tx:#f2f2f4;--mute:#9a9aa6;--acc:#8b7cff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Segoe UI Variable","Segoe UI",system-ui,sans-serif}
-a{color:inherit}.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header{padding:22px 0;display:flex;align-items:center;gap:12px}.logo{width:44px;height:26px;border-radius:13px;background:#000;box-shadow:0 0 0 1px #ffffff22;display:grid;place-items:center}.logo i{width:6px;height:9px;border-radius:3px;background:#fff;margin:0 2px}
-header b{font-size:18px}header nav{margin-left:auto;display:flex;gap:18px;font-size:14px;color:var(--mute)}header nav a{text-decoration:none}header nav a:hover{color:var(--tx)}
-.hero{text-align:center;padding:70px 0 40px}
-.pill{margin:0 auto 46px;width:min(560px,92%);height:62px;border-radius:31px;background:#000;box-shadow:0 20px 60px #0009,0 0 0 1px #ffffff1a,0 0 90px -20px var(--acc);display:flex;align-items:center;gap:14px;padding:0 22px;animation:breathe 5s ease-in-out infinite}
-@keyframes breathe{50%{transform:scale(1.025);box-shadow:0 26px 70px #000a,0 0 0 1px #ffffff22,0 0 120px -18px var(--acc)}}
-.pill .art{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#ff6b9a,#8b7cff)}.pill .t{flex:1;text-align:left;font-size:14px}.pill .t small{display:block;color:var(--mute);font-size:12px}
-.bars{display:flex;gap:3px;align-items:end;height:22px}.bars i{width:4px;border-radius:2px;background:var(--acc);animation:b 1s ease-in-out infinite}.bars i:nth-child(2){animation-delay:.2s}.bars i:nth-child(3){animation-delay:.4s}.bars i:nth-child(4){animation-delay:.1s}@keyframes b{0%,100%{height:5px}50%{height:22px}}
-h1{font-size:clamp(34px,6vw,62px);line-height:1.08;margin:0 0 16px;letter-spacing:-1.5px}h1 span{background:linear-gradient(90deg,#fff,#b6acff);-webkit-background-clip:text;color:transparent}
-.lead{color:var(--mute);font-size:19px;max-width:640px;margin:0 auto 32px}
-.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:14px;background:var(--acc);color:#0b0b0e;font-weight:700;text-decoration:none;font-size:16px}.btn:hover{filter:brightness(1.08)}
-.btn.ghost{background:transparent;color:var(--tx);box-shadow:inset 0 0 0 1px var(--line)}.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ver{color:var(--mute);font-size:13px;margin-top:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:60px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}.card b{display:block;font-size:17px;margin:10px 0 6px}.card p{margin:0;color:var(--mute);font-size:14.5px}.card .ic{font-size:26px}
-h2{font-size:30px;margin:70px 0 10px;letter-spacing:-.5px}.steps{counter-reset:s;display:grid;gap:12px;margin:20px 0 80px}.steps div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px 18px 64px;position:relative}
-.steps div::before{counter-increment:s;content:counter(s);position:absolute;left:20px;top:16px;width:30px;height:30px;border-radius:50%;background:#ffffff12;display:grid;place-items:center;font-weight:700}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:13px;text-align:center}
+:root{--bg:#08080b;--bg2:#0f0f14;--card:#14141a;--line:#ffffff12;--tx:#f3f3f6;--mute:#9b9ba8;--acc:#8c7cff;--acc2:#4ad6c4;--warm:#ffb86b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+/* nav */
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:#08080bcc;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+.logo{width:40px;height:22px;border-radius:11px;background:#000;box-shadow:0 0 0 1px #ffffff26;display:grid;place-items:center;grid-auto-flow:column;gap:5px;padding:0 12px}.logo i{width:4px;height:8px;border-radius:2px;background:#fff;animation:blink 6s infinite}
+@keyframes blink{0%,46%,50%,100%{transform:scaleY(1)}48%{transform:scaleY(.1)}}
+nav .links{margin-left:auto;display:flex;gap:26px;font-size:14.5px;color:var(--mute)}nav .links a:hover{color:var(--tx)}
+.nbtn{height:38px;padding:0 16px;border-radius:11px;background:var(--tx);color:#000;font-weight:650;font-size:14px;display:inline-flex;align-items:center;gap:8px}
+/* hero */
+.hero{position:relative;padding:86px 0 40px;text-align:center}
+.glow{position:absolute;inset:-20% -10% auto;height:720px;background:radial-gradient(600px 300px at 30% 30%,#8c7cff33,transparent 70%),radial-gradient(520px 280px at 72% 22%,#4ad6c42b,transparent 70%),radial-gradient(500px 260px at 50% 80%,#ff7ab620,transparent 70%);filter:blur(10px);pointer-events:none;z-index:-1}
+.isl{margin:0 auto 54px;height:64px;width:300px;border-radius:32px;background:#000;box-shadow:0 0 0 1px #ffffff1c,0 30px 80px #000c,0 0 120px -30px var(--acc);display:flex;align-items:center;gap:14px;padding:0 18px;overflow:hidden;animation:morph 9s cubic-bezier(.6,0,.2,1) infinite}
+@keyframes morph{0%,18%{width:300px;height:64px;border-radius:32px}28%,62%{width:min(620px,92vw);height:150px;border-radius:38px}72%,100%{width:300px;height:64px;border-radius:32px}}
+.isl .art{width:40px;height:40px;border-radius:11px;flex:none;background:linear-gradient(135deg,#ff7ab6,#8c7cff 60%,#4ad6c4);animation:artm 9s cubic-bezier(.6,0,.2,1) infinite}
+@keyframes artm{0%,18%,72%,100%{width:40px;height:40px}28%,62%{width:100px;height:100px;border-radius:18px}}
+.isl .t{flex:1;text-align:left;min-width:0;white-space:nowrap}.isl .t b{display:block;font-size:15px}.isl .t small{color:var(--mute);font-size:12.5px}
+.isl .p{height:4px;border-radius:2px;background:#ffffff20;margin-top:10px;overflow:hidden;opacity:0;animation:pm 9s infinite}.isl .p i{display:block;height:100%;width:42%;background:var(--acc)}@keyframes pm{0%,22%,66%,100%{opacity:0}30%,60%{opacity:1}}
+.bars{display:flex;gap:3px;align-items:flex-end;height:24px;flex:none}.bars i{width:4px;border-radius:2px;background:var(--acc2);animation:bar .9s ease-in-out infinite}.bars i:nth-child(2){animation-delay:.15s;background:var(--acc)}.bars i:nth-child(3){animation-delay:.3s}.bars i:nth-child(4){animation-delay:.08s;background:var(--acc)}
+@keyframes bar{0%,100%{height:6px}50%{height:24px}}
+h1{font-size:clamp(40px,7vw,78px);line-height:1.02;margin:0 0 20px;letter-spacing:-2.5px;font-weight:750}
+h1 .g{background:linear-gradient(100deg,#fff 10%,#c9c0ff 50%,#7fe8da 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mute);font-size:clamp(17px,2.2vw,20px);max-width:680px;margin:0 auto 34px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px;border-radius:15px;font-weight:700;font-size:16px;transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px)}.btn.main{background:linear-gradient(135deg,#9d8fff,#7a68ff);color:#fff;box-shadow:0 14px 40px -10px #7a68ffaa}.btn.ghost{box-shadow:inset 0 0 0 1px #ffffff26;color:var(--tx)}
+.meta{margin-top:16px;color:var(--mute);font-size:13.5px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px}.badges span{font-size:12.5px;color:#c8c8d4;padding:5px 11px;border-radius:999px;background:#ffffff0c;box-shadow:inset 0 0 0 1px var(--line)}
+.shot{margin:64px auto 0;max-width:980px;border-radius:30px;padding:10px;background:linear-gradient(180deg,#ffffff14,#ffffff05);box-shadow:0 50px 120px -30px #000,0 0 0 1px var(--line);transform:perspective(1600px) rotateX(10deg);transition:transform .8s cubic-bezier(.2,.9,.25,1)}
+.shot:hover{transform:perspective(1600px) rotateX(0)}.shot img{border-radius:22px;-webkit-mask-image:linear-gradient(#000 85%,transparent);mask-image:linear-gradient(#000 85%,transparent)}
+/* sections */
+section{padding:90px 0}.eyebrow{color:var(--acc2);font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+h2{font-size:clamp(30px,4.4vw,46px);line-height:1.1;margin:10px 0 14px;letter-spacing:-1.2px}
+.sub{color:var(--mute);font-size:18px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:40px}
+.card{background:var(--card);border-radius:20px;padding:24px;box-shadow:inset 0 0 0 1px var(--line);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px #ffffff26}
+.card .ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:22px;background:#ffffff0d}
+.card b{display:block;font-size:17.5px;margin:14px 0 6px}.card p{margin:0;color:var(--mute);font-size:14.5px}
+.feat{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center;padding:56px 0}
+.feat.rev{grid-template-columns:1.25fr 1fr}.feat.rev .txt{order:2}
+.feat .img{border-radius:24px;padding:8px;background:linear-gradient(160deg,#ffffff12,#ffffff03);box-shadow:0 40px 90px -30px #000,0 0 0 1px var(--line)}.feat .img img{border-radius:18px}
+.feat ul{padding:0;margin:20px 0 0;list-style:none}.feat li{padding:8px 0 8px 30px;position:relative;color:#d6d6e0}.feat li::before{content:"";position:absolute;left:2px;top:15px;width:14px;height:8px;border-left:2.5px solid var(--acc2);border-bottom:2.5px solid var(--acc2);transform:rotate(-45deg)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;counter-reset:s}
+.step{background:var(--card);border-radius:20px;padding:26px;box-shadow:inset 0 0 0 1px var(--line)}.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#9d8fff,#4ad6c4);color:#000;font-weight:800;margin-bottom:14px}
+.step b{display:block;font-size:17px;margin-bottom:6px}.step p{margin:0;color:var(--mute);font-size:14.5px}
+.news{background:var(--card);border-radius:20px;padding:26px 28px;box-shadow:inset 0 0 0 1px var(--line);margin-top:30px;white-space:pre-wrap;color:#d6d6e0;font-size:15px;max-height:420px;overflow:auto}
+.faq{margin-top:30px;display:grid;gap:10px}.faq details{background:var(--card);border-radius:16px;padding:0 22px;box-shadow:inset 0 0 0 1px var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:650;font-size:16.5px;display:flex;justify-content:space-between;gap:12px}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";color:var(--mute);font-size:22px;line-height:1;transition:transform .2s}.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin:0 0 18px;color:var(--mute)}
+.final{text-align:center;padding:100px 0 110px;position:relative}.final .glow{top:0;height:500px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:13.5px}footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.9,.25,1)}.reveal.in{opacity:1;transform:none}
+@media (max-width:860px){nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps{grid-template-columns:1fr}.shot{transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header><span class="logo"><i></i><i></i></span><b>Island</b><nav><a href="#features">Можливості</a><a href="#install">Встановлення</a><a id="gh" href="#">GitHub</a></nav></header>
-<section class="hero">
-  <div class="pill"><span class="art"></span><span class="t">Нічний трек<small>Улюблений виконавець</small></span><span class="bars"><i></i><i></i><i></i><i></i></span></div>
-  <h1><span>Динамічний острів</span><br>для Windows</h1>
-  <p class="lead">Музика з текстом пісень, сповіщення з відповіддю в один рядок, файли на телефон з будь-якої мережі. Усе в рідкій пілюлі вгорі екрана.</p>
-  <div class="cta"><a class="btn" id="dl" href="#">⬇ Завантажити для Windows</a><a class="btn ghost" href="#features">Що вміє</a></div>
-  <div class="ver" id="ver">Windows 10 і 11 · безкоштовно</div>
-</section>
-<section id="features" class="grid">
-  <div class="card"><span class="ic">🎵</span><b>Музика</b><p>Будь-який плеєр, обкладинка, хвиля в ритм, синхронний текст пісні, ♥ у Spotify.</p></div>
-  <div class="card"><span class="ic">💬</span><b>Сповіщення</b><p>Telegram з відповіддю прямо з острова, Discord, Gmail. Серії повідомлень не заважають.</p></div>
-  <div class="card"><span class="ic">📱</span><b>Телефон ⇄ ПК</b><p>Файли до 2 ГБ і текст через ваше «Збережене» в Telegram або QR-код у Wi-Fi.</p></div>
-  <div class="card"><span class="ic">🗂️</span><b>Полиця й нотатки</b><p>Перетягніть файли на острів, вони почекають. Нотатки одним кліком на телефон.</p></div>
-  <div class="card"><span class="ic">🎮</span><b>Ігри</b><p>Steam, Epic, GOG і свої лаунчери, друзі онлайн, безкоштовні ігри тижня.</p></div>
-  <div class="card"><span class="ic">🛠️</span><b>Для розробників</b><p>25+ інструментів: веб, JSON, SQL, Python, хеші, мережа, cron. Запити Claude Code з кнопками.</p></div>
-  <div class="card"><span class="ic">🌍</span><b>Перекладач і час</b><p>Переклад наживо, світовий час, таймер, будильники, нагадування звичайною мовою.</p></div>
-  <div class="card"><span class="ic">🎛️</span><b>Керування</b><p>Wi-Fi, Bluetooth, гучність, яскравість, «Не турбувати» — без пошуку в параметрах.</p></div>
-  <div class="card"><span class="ic">🔒</span><b>Приватно</b><p>Усе працює на вашому ПК. Ключі й сесії зашифровані Windows і нікуди не надсилаються.</p></div>
-</section>
-<h2 id="install">Встановлення</h2>
-<div class="steps">
-  <div>Завантажте <b>Island-Setup.exe</b> кнопкою вище.</div>
-  <div>Запустіть. Поки програма без цифрового підпису, Windows покаже попередження: «Докладніше» → «Все одно запустити».</div>
-  <div>Острів з’явиться вгорі екрана. Нові версії він запропонує встановити сам.</div>
-</div>
-</div>
-<footer>Island · зроблено в Україні 🇺🇦</footer>
+<nav><div class="wrap"><a class="brand" href="#"><span class="logo"><i></i><i></i></span>Island</a>
+<div class="links"><a href="#features">Можливості</a><a href="#phone">Телефон ⇄ ПК</a><a href="#install">Встановлення</a><a href="#faq">Питання</a></div>
+<a class="nbtn dl" href="#">⬇ Завантажити</a></div></nav>
+
+<header class="hero"><div class="glow"></div><div class="wrap">
+  <div class="isl"><span class="art"></span><span class="t"><b>Нічне місто</b><small>Island Demo · зараз грає</small><div class="p"><i></i></div></span><span class="bars"><i></i><i></i><i></i><i></i></span></div>
+  <h1>Динамічний острів<br><span class="g">для Windows</span></h1>
+  <p class="lead">Музика, сповіщення з відповіддю, файли на телефон і ще десятки дрібниць — у живій пілюлі вгорі екрана. Завжди під рукою, ніколи не заважає.</p>
+  <div class="cta"><a class="btn main dl" href="#">⬇ Завантажити безкоштовно</a><a class="btn ghost" href="#features">Що вміє Island</a></div>
+  <div class="meta" id="ver">Windows 10 і 11</div>
+  <div class="badges"><span>🇺🇦 Українською</span><span>10 мов інтерфейсу</span><span>Без реклами</span><span>Оновлюється сам</span></div>
+  <div class="shot reveal"><img src="img/home.png" alt="Головна панель Island: плеєр, інструменти, пошта та YouTube" loading="eager"></div>
+</div></header>
+
+<section id="features"><div class="wrap">
+  <div class="eyebrow reveal">Можливості</div><h2 class="reveal">Усе потрібне — в одному місці</h2><p class="sub reveal">Острів сидить над вкладками браузера, пропускає кліки, коли не потрібен, і розгортається, коли ви наводите курсор.</p>
+  <div class="grid">
+    <div class="card reveal"><span class="ic">🎵</span><b>Музика</b><p>Будь-який плеєр: Spotify, YouTube, Apple Music. Обкладинка, хвиля в ритм, синхронний текст пісні.</p></div>
+    <div class="card reveal"><span class="ic">💬</span><b>Сповіщення з відповіддю</b><p>Відповідайте в Telegram прямо з острова. Серії повідомлень складаються в один тост.</p></div>
+    <div class="card reveal"><span class="ic">📱</span><b>Телефон ⇄ ПК</b><p>Файли до 2 ГБ і текст через ваше «Збережене» в Telegram — з будь-якої мережі.</p></div>
+    <div class="card reveal"><span class="ic">🗂️</span><b>Полиця й нотатки</b><p>Перетягніть файли на острів — вони почекають. Нотатку — на телефон одним кліком.</p></div>
+    <div class="card reveal"><span class="ic">📋</span><b>Буфер обміну</b><p>Історія скопійованого з пошуком і таймером автовидалення.</p></div>
+    <div class="card reveal"><span class="ic">🌍</span><b>Перекладач і світовий час</b><p>Переклад наживо 12 мовами, годинник для міст, таймер, будильники, нагадування.</p></div>
+    <div class="card reveal"><span class="ic">🎮</span><b>Ігри</b><p>Steam, Epic, GOG і свої лаунчери. Друзі онлайн, безкоштовні ігри тижня.</p></div>
+    <div class="card reveal"><span class="ic">🛠️</span><b>Для розробників</b><p>25+ інструментів у теках: веб, SQL, Python, хеші, мережа, cron. Запити Claude Code з кнопками.</p></div>
+    <div class="card reveal"><span class="ic">🔔</span><b>Живі події</b><p>Завантаження, флешки, Bluetooth, живлення, нові листи, події календаря.</p></div>
+  </div>
+</div></section>
+
+<section id="phone" style="padding-top:20px"><div class="wrap">
+  <div class="feat"><div class="txt reveal"><div class="eyebrow">Телефон ⇄ ПК</div><h2>Скинути файл на телефон — одна кнопка</h2><p class="sub">Надсилайте з телефона в «Збережене» Telegram — фото й файли з’являться на полиці острова. З ПК — так само назад. Без кабелів і спільної мережі.</p>
+    <ul><li>Файли до 2 ГБ, текст — одразу в буфер обміну</li><li>Нотатки зі списками справ — на телефон одним кліком</li><li>Без Telegram — через QR-код у вашій Wi-Fi мережі</li></ul></div>
+    <div class="img reveal"><img src="img/shelf.png" alt="Полиця: файли, нотатки і кнопка «На телефон»" loading="lazy"></div></div>
+  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Сповіщення</div><h2>Відповідайте, не перемикаючи вікна</h2><p class="sub">Повідомлення з Telegram з’являються на острові з полем відповіді. Discord, Gmail та інші програми — теж тут, але чати без звуку лишаються тихими.</p>
+    <ul><li>Вхід у Telegram через QR — за 10 секунд</li><li>Серія повідомлень — один тост із лічильником</li><li>«Не турбувати» і тиша під час фокус-таймера</li></ul></div>
+    <div class="img reveal"><img src="img/toast.png" alt="Сповіщення Telegram з полем відповіді" loading="lazy"></div></div>
+  <div class="feat"><div class="txt reveal"><div class="eyebrow">Для розробників</div><h2>Інструменти — на відстані наведення</h2><p class="sub">Форматування SQL і JSON, CSV ⇄ JSON, генерація TypeScript-інтерфейсів і Python-класів, хеші, підмережі, cron, кольори з контрастом WCAG — і запити Claude Code з кнопками ✓/✕.</p>
+    <ul><li>Теки: Веб, Дані, Бази даних, Python, Безпека, Мережа</li><li>Локальні сервери з портами — відкрити чи зупинити</li><li>Останні проєкти VS Code</li></ul></div>
+    <div class="img reveal"><img src="img/dev.png" alt="Розробка: форматування SQL" loading="lazy"></div></div>
+  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Щодня</div><h2>Перекладач, час і таймери</h2><p class="sub">Пишіть — переклад з’являється сам. Таймер з колесами як на iPhone, будильники з днями тижня, секундомір і нагадування звичайними словами: «подзвонити мамі завтра о 9».</p></div>
+    <div class="img reveal"><img src="img/text.png" alt="Перекладач Island" loading="lazy"></div></div>
+</div></section>
+
+<section id="install" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Встановлення</div><h2 class="reveal">Три кроки</h2>
+  <div class="steps"><div class="step reveal"><b>Завантажте</b><p>Інсталятор Island-Setup.exe — кнопкою вгорі.</p></div><div class="step reveal"><b>Запустіть</b><p>Поки програма без цифрового підпису, Windows покаже попередження: «Докладніше» → «Все одно запустити».</p></div><div class="step reveal"><b>Готово</b><p>Острів з’явиться вгорі екрана, а нові версії запропонує встановити сам.</p></div></div>
+  <div class="eyebrow reveal" style="margin-top:60px">Що нового</div><div class="news reveal" id="news">Завантажую…</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="eyebrow reveal">Питання</div><h2 class="reveal">Часті запитання</h2>
+  <div class="faq">
+    <details class="reveal"><summary>Це безпечно?</summary><p>Так. Island працює лише на вашому ПК. Сесії, токени й ключі зашифровані Windows (DPAPI) і нікуди не надсилаються, крім самих сервісів, які ви підключили. Оновлення підписані цифровим підписом автора — підмінене оновлення Island не встановить.</p></details>
+    <details class="reveal"><summary>Чому Windows показує попередження при встановленні?</summary><p>Island поки не має платного сертифіката розробника, тому SmartScreen не знає видавця. Натисніть «Докладніше» → «Все одно запустити».</p></details>
+    <details class="reveal"><summary>Скільки це коштує?</summary><p>Island безкоштовний і без реклами.</p></details>
+    <details class="reveal"><summary>Які мови підтримуються?</summary><p>Українська, English, Polski, Deutsch, Español, Français, Nederlands, 中文, 日本語, 한국어 — перемикаються в налаштуваннях.</p></details>
+    <details class="reveal"><summary>Чи заважатиме острів працювати?</summary><p>Ні: пілюля пропускає кліки до вкладок під нею, ховається в повноекранних програмах і може ховатися сама, коли ви нею не користуєтеся.</p></details>
+    <details class="reveal"><summary>Як оновлювати?</summary><p>Island сам повідомить про нову версію: «Налаштування → Про програму → Оновити». Нічого завантажувати вручну не треба.</p></details>
+  </div>
+</div></section>
+
+<section class="final"><div class="glow"></div><div class="wrap"><h2 class="reveal">Спробуйте Island</h2><p class="sub reveal" style="margin:0 auto 30px">Безкоштовно для Windows 10 і 11.</p><a class="btn main dl reveal" href="#">⬇ Завантажити</a></div></section>
+
+<footer><div class="wrap"><span>Island · зроблено в Україні 🇺🇦</span><span><a id="gh" href="#">GitHub</a> · <a id="rel" href="#">Усі версії</a></span></div></footer>
 <script>
-// owner/repo from the GitHub Pages address: https://OWNER.github.io/REPO/
-const owner = location.hostname.split('.')[0], repo = location.pathname.split('/').filter(Boolean)[0] || '';
-const base = owner && repo ? `https://github.com/${owner}/${repo}` : '#';
-document.getElementById('gh').href = base;
-document.getElementById('dl').href = base + '/releases/latest';
-if (owner && repo) fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`).then(r => r.json()).then(r => {
+const owner = location.hostname.endsWith('github.io') ? location.hostname.split('.')[0] : 'Freshman-69';
+const repo = location.hostname.endsWith('github.io') ? (location.pathname.split('/').filter(Boolean)[0] || 'Island-win') : 'Island-win';
+const base = `https://github.com/${owner}/${repo}`;
+document.getElementById('gh').href = base; document.getElementById('rel').href = base + '/releases';
+for (const a of document.querySelectorAll('.dl')) a.href = base + '/releases/latest';
+fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`).then(r => r.ok ? r.json() : Promise.reject()).then(r => {
   const a = (r.assets || []).find(x => /Setup.*\.exe$/i.test(x.name));
-  if (a) { document.getElementById('dl').href = a.browser_download_url; document.getElementById('ver').textContent = `Версія ${r.tag_name.replace(/^v/, '')} · ${(a.size / 1048576).toFixed(0)} МБ · Windows 10 і 11`; }
-}).catch(() => {});
+  if (a) for (const b of document.querySelectorAll('.dl')) b.href = a.browser_download_url;
+  const v = r.tag_name.replace(/^v/, '');
+  document.getElementById('ver').textContent = `Версія ${v}${a ? ' · ' + Math.round(a.size / 1048576) + ' МБ' : ''} · Windows 10 і 11`;
+  document.getElementById('news').textContent = `Island ${v} — ${new Date(r.published_at).toLocaleDateString('uk', { day: 'numeric', month: 'long', year: 'numeric' })}\n\n` + String(r.body || '').replace(/\n*(sha256|sig): \S+/g, '').replace(/\*\*/g, '').replace(/^#+\s*/gm, '').trim();
+}).catch(() => { document.getElementById('news').textContent = 'Перша версія ось-ось з’явиться.'; });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
