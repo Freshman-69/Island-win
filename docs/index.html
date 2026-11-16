@@ -98,6 +98,22 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-
 @media (max-width:860px){nav .links{display:none}.feat,.feat.rev{grid-template-columns:1fr;gap:28px}.feat.rev .txt{order:0}.steps,.fb{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding-top:50px}}
 /* "reduce motion" (e.g. Windows animation effects off): keep calm fades and the island demo, drop big movement */
 @media (prefers-reduced-motion:reduce){.orbs i,.btn.main::after,.ring::before{animation:none!important}.reveal{transform:none;transition:opacity .6s}h1 .w{transform:none;filter:none;animation-duration:.6s}.tilt{transform:none!important}.mq .tr{animation-duration:90s}html{scroll-behavior:auto}}
+
+.show{display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:36px;align-items:start}
+.show-list{display:grid;gap:4px}
+.show-list button{position:relative;overflow:hidden;text-align:left;border:0;background:transparent;color:var(--mute);padding:12px 16px;border-radius:14px;cursor:pointer;font:inherit;transition:background .25s,color .25s}
+.show-list button b{display:block;color:var(--tx);font-size:15.5px;font-weight:650;opacity:.75;transition:opacity .25s}.show-list button span{display:block;font-size:13.5px;margin-top:1px}
+.show-list button:hover{background:#ffffff08}.show-list button.on{background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}.show-list button.on b{opacity:1}
+.show-list button i{position:absolute;left:16px;right:16px;bottom:6px;height:2px;border-radius:2px;background:#ffffff10;opacity:0}.show-list button.on i{opacity:1}
+.show-list button i::after{content:"";position:absolute;inset:0;width:0;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2))}.show-list button.on i::after{animation:showp var(--dur,7s) linear forwards}.show.paused .show-list button.on i::after{animation-play-state:paused}
+@keyframes showp{to{width:100%}}
+.show-view{position:sticky;top:90px}.show-frame{border-radius:24px;padding:8px;background:linear-gradient(160deg,#ffffff12,#ffffff03);box-shadow:0 40px 90px -30px #000,0 0 0 1px var(--line);min-height:220px;display:grid;place-items:center}
+.show-frame img{border-radius:18px;width:100%;height:auto;transition:opacity .35s,transform .45s cubic-bezier(.2,.9,.25,1)}.show-frame img.swap{opacity:0;transform:scale(.985) translateY(6px)}
+.show-view h3{margin:18px 4px 6px;font-size:22px;letter-spacing:-.4px}.show-view p{margin:0 4px;color:var(--mute);max-width:640px;font-size:16px}
+@media (max-width:860px){.show{grid-template-columns:1fr}.show-list{grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}.show-list button span{display:none}.show-view{position:static}}
+/* hero eyes follow the cursor */
+.s-pill .eyes{transition:transform .25s ease-out;cursor:pointer}.s-pill .eyes.squish{animation:squish .45s cubic-bezier(.3,1.6,.5,1)}@keyframes squish{30%{transform:scale(.8,1.15)}60%{transform:scale(1.12,.9)}}
+.s-pill .eyes.happy i{height:9px;border-radius:9px 9px 3px 3px;transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -156,32 +172,32 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-note"/></svg></span><b>Нотатки</b><p>Заголовки, стилі, кольори, чеклісти й таблиці з рядками, стовпцями та Tab — як у нотатках iPhone.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-case"/></svg></span><b>Інструменти</b><p>Калькулятор, ПДВ, зарплата, сума прописом, курси НБУ, робочі дні — і ваші робочі програми поруч.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-cpu"/></svg></span><b>Монітор системи</b><p>Процесор, відеокарта, памʼять, диски й мережа, програми з іконками — і закриття завислої програми одним кліком.</p></div>
-    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-game"/></svg></span><b>Ігри</b><p>Steam, Epic, GOG і свої лаунчери, друзі онлайн, безкоштовні ігри, ігровий режим.</p></div>
+    <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-game"/></svg></span><b>Ігри</b><p>Ігри з усіх лаунчерів, друзі онлайн, знижки в девʼяти магазинах і майбутні релізи з платформами.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-code"/></svg></span><b>Розробка</b><p>30+ інструментів у теках: веб, дані, SQL, Python, Git і Docker, безпека, мережа.</p></div>
     <div class="card reveal"><span class="ic"><svg class="i"><use href="#i-globe"/></svg></span><b>Перекладач і час</b><p>Переклад наживо, світовий годинник, таймер, будильники, нагадування.</p></div>
   </div>
-  <div class="more reveal"><span><svg class="i"><use href="#i-clip"/></svg>Буфер обміну з історією</span><span><svg class="i"><use href="#i-spark"/></svg>Текст з екрана (OCR)</span><span><svg class="i"><use href="#i-bell"/></svg>Будильники й нагадування</span><span><svg class="i"><use href="#i-sun"/></svg>Погода з попередженням про дощ</span><span><svg class="i"><use href="#i-spark"/></svg>Персонажі з настроєм</span><span><svg class="i"><use href="#i-inbox"/></svg>Полиця для файлів</span><span><svg class="i"><use href="#i-chat"/></svg>ШІ-чати: ChatGPT, Claude, Gemini</span><span><svg class="i"><use href="#i-code"/></svg>Запити Claude Code з кнопками</span><span><svg class="i"><use href="#i-shield"/></svg>Ключі зашифровані, оновлення підписані</span><span><svg class="i"><use href="#i-globe"/></svg>10 мов інтерфейсу</span></div>
+  <div class="more reveal"><span><svg class="i"><use href="#i-clip"/></svg>Буфер обміну з історією</span><span><svg class="i"><use href="#i-spark"/></svg>Текст з екрана (OCR)</span><span><svg class="i"><use href="#i-bell"/></svg>Будильники й нагадування</span><span><svg class="i"><use href="#i-sun"/></svg>Погода з попередженням про дощ</span><span><svg class="i"><use href="#i-spark"/></svg>Персонаж, з яким можна гратися</span><span><svg class="i"><use href="#i-inbox"/></svg>Полиця для файлів</span><span><svg class="i"><use href="#i-chat"/></svg>ШІ-чати: ChatGPT, Claude, Gemini</span><span><svg class="i"><use href="#i-code"/></svg>Запити Claude Code з кнопками</span><span><svg class="i"><use href="#i-shield"/></svg>Ключі зашифровані, оновлення підписані</span><span><svg class="i"><use href="#i-globe"/></svg>10 мов інтерфейсу</span></div>
 </div></section>
 
-<section id="tour" style="padding-top:20px"><div class="wrap">
-  <div class="feat"><div class="txt reveal"><div class="eyebrow">Головна</div><h2>Ваш день — одним поглядом</h2><p class="sub">Коли музика не грає, острів показує, що попереду: погоду й дощ, найближчі будильники та нагадування, непрочитану пошту й нові відео — і запускає музику одним кліком.</p>
-    <ul><li>Погода зараз і попередження про дощ</li><li>Будильники, нагадування, події календаря</li><li>Щодня — нова порада про можливості</li></ul></div>
-    <div class="img reveal tilt"><img src="img/today.png" width="936" height="408" alt="Картка «Сьогодні»" loading="lazy" decoding="async"></div></div>
-  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Полиця</div><h2>Файли, нотатки й телефон — разом</h2><p class="sub">Перетягніть файли на острів — вони почекають. Поруч нотатки з повноцінним форматуванням, і все це — на телефон однією кнопкою.</p>
-    <ul><li>Назва, заголовки, моно, жирний, курсив, підкреслення</li><li>Списки, чеклісти, цитати, таблиці, кольори й маркер</li><li>Надіслати в «Збережене» Telegram або через QR</li></ul></div>
-    <div class="img reveal tilt"><img src="img/notes.png" width="936" height="496" alt="Полиця з файлами й нотатками" loading="lazy" decoding="async"></div></div>
-  <div class="feat"><div class="txt reveal"><div class="eyebrow">Сповіщення</div><h2>Відповідайте, не перемикаючи вікна</h2><p class="sub">Повідомлення Telegram зʼявляються на острові з полем відповіді. Серія повідомлень складається в одне, а чати без звуку лишаються тихими.</p>
-    <ul><li>Вхід у Telegram за QR-кодом</li><li>Скільки показувати сповіщення — обираєте ви</li><li>Історія в центрі сповіщень</li></ul></div>
-    <div class="img reveal tilt"><img src="img/toast.png" width="702" height="124" alt="Повідомлення Telegram з полем відповіді" loading="lazy" decoding="async"></div></div>
-  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Інструменти</div><h2>Для роботи, навчання й побуту</h2><p class="sub">Калькулятор, зарплата «на руки», ФОП, ПДВ і сума прописом, курси НБУ, перевірка IBAN, середній бал, робочі дні, римські числа, комуналка, пальне, поділ рахунку. Над інструментами — панель ваших робочих програм.</p></div>
-    <div class="img reveal tilt"><img src="img/tools.png" width="936" height="498" alt="Інструменти: зарплата на руки" loading="lazy" decoding="async"></div></div>
-  <div class="feat"><div class="txt reveal"><div class="eyebrow">Система</div><h2>Що відбувається з вашим ПК</h2><p class="sub">Навантаження процесора, відеокарти, памʼяті й дисків з живими графіками, вільне місце й програми, що гальмують.</p>
-    <ul><li>Сповіщення, коли ПК перевантажений або закінчується місце</li><li>Завершити програму одним кліком</li></ul></div>
-    <div class="img reveal tilt"><img src="img/system.png" width="936" height="607" alt="Монітор системи" loading="lazy" decoding="async"></div></div>
-  <div class="feat rev"><div class="txt reveal"><div class="eyebrow">Розробка</div><h2>Інструменти розробника поруч</h2><p class="sub">Форматування SQL і JSON, CSV ⇄ JSON, TypeScript-інтерфейси й Python-класи, шпаргалки Git і Docker, SemVer, екранування, Markdown, хеші, підмережі, cron, кольори з контрастом WCAG, локальні сервери — і запити Claude Code з кнопками.</p></div>
-    <div class="img reveal tilt"><img src="img/dev.png" width="936" height="538" alt="Форматування SQL" loading="lazy" decoding="async"></div></div>
-  <div class="feat"><div class="txt reveal"><div class="eyebrow">Перекладач</div><h2>Переклад, поки ви пишете</h2><p class="sub">Вставте текст — переклад зʼявиться сам. 12 мов, автовизначення, заміна оригіналу одним кліком.</p></div>
-    <div class="img reveal tilt"><img src="img/text.png" width="936" height="358" alt="Перекладач" loading="lazy" decoding="async"></div></div>
+<section id="tour"><div class="wrap">
+  <div class="eyebrow reveal">Огляд</div><h2 class="reveal">Подивіться, що всередині</h2><p class="sub reveal">Оберіть розділ — справжні знімки програми, без прикрас.</p>
+  <div class="show reveal" id="show">
+    <div class="show-list" role="tablist" aria-label="Розділи Island">
+      <button role="tab" data-i="0"><b>Головна</b><span>День, погода, справи й музика</span><i></i></button>
+      <button role="tab" data-i="1"><b>Полиця й нотатки</b><span>Файли чекають тут, нотатки з таблицями</span><i></i></button>
+      <button role="tab" data-i="2"><b>Сповіщення</b><span>Відповідь у Telegram просто з острова</span><i></i></button>
+      <button role="tab" data-i="3"><b>Ігри</b><span>Усі лаунчери, друзі, знижки, релізи</span><i></i></button>
+      <button role="tab" data-i="4"><b>Інструменти</b><span>Калькулятор, зарплата, ПДВ, курси</span><i></i></button>
+      <button role="tab" data-i="5"><b>Керування</b><span>Wi-Fi, Bluetooth, звук, живлення</span><i></i></button>
+      <button role="tab" data-i="6"><b>Система</b><span>Що навантажує ваш ПК</span><i></i></button>
+      <button role="tab" data-i="7"><b>Розробка</b><span>SQL, JSON, Git, порти, Claude Code</span><i></i></button>
+      <button role="tab" data-i="8"><b>Перекладач</b><span>Переклад, поки ви пишете</span><i></i></button>
+    </div>
+    <div class="show-view">
+      <div class="show-frame ring"><img id="showImg" src="img/today.png" width="936" height="408" alt="" decoding="async"></div>
+      <h3 id="showT"></h3><p id="showD"></p>
+    </div>
+  </div>
 </div></section>
 
 <section id="privacy"><div class="wrap">
@@ -203,7 +219,7 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-
     <details class="reveal"><summary>Скільки це коштує?</summary><p>Island безкоштовний і без реклами.</p></details>
     <details class="reveal"><summary>Які мови підтримуються?</summary><p>Українська, English, Polski, Deutsch, Español, Français, Nederlands, 中文, 日本語, 한국어.</p></details>
     <details class="reveal"><summary>Чи заважатиме острів працювати?</summary><p>Ні: пілюля пропускає кліки до вкладок під нею, ховається в іграх і повноекранних програмах і може ховатися сама, коли ви нею не користуєтеся.</p></details>
-    <details class="reveal"><summary>Як оновлювати?</summary><p>Island сам повідомить про нову версію: «Налаштування → Про програму → Оновити».</p></details>
+    <details class="reveal"><summary>Як оновлювати?</summary><p>Island сам повідомить про нову версію: «Налаштування → Про програму → Оновити». Після оновлення коротке навчання покаже, що зʼявилося нового, — його можна пройти ще раз там же.</p></details>
   </div>
 </div></section>
 
@@ -245,6 +261,44 @@ demo.addEventListener('click', e => { const b = e.target.closest('button'); if (
 isl.addEventListener('click', () => { clearTimeout(autoT); step(); });
 let tsec = 299; setInterval(() => { tsec = tsec > 0 ? tsec - 1 : 299; document.getElementById('tclock').textContent = String(Math.floor(tsec / 60)).padStart(2, '0') + ':' + String(tsec % 60).padStart(2, '0'); }, 1000);
 // marquee: duplicate once so it loops seamlessly
+// showcase: one section at a time, advances by itself, pauses while you look
+const SHOW = [
+  ['today', 936, 408, 'Ваш день — одним поглядом', 'Коли музика не грає, острів показує погоду з попередженням про дощ, найближчі будильники й нагадування та запускає улюблений сервіс одним кліком.'],
+  ['notes', 936, 496, 'Файли, нотатки й телефон — разом', 'Перетягніть файл на острів — він почекає на полиці. Нотатки вміють заголовки, чеклісти й таблиці, а кнопка «На телефон» надішле все у ваш Telegram.'],
+  ['toast', 702, 124, 'Відповідайте, не перемикаючи вікна', 'Повідомлення Telegram зʼявляються на острові з полем відповіді. Серія листів складається в одне, чати без звуку лишаються тихими.'],
+  ['games.jpg', 914, 620, 'Усі ігри в одному місці', 'Steam, Epic, GOG, Ubisoft, EA, Riot і папки з іграми на дисках. Друзі онлайн з точним статусом, знижки в девʼяти магазинах і найочікуваніші релізи з платформами.'],
+  ['tools', 936, 498, 'Для роботи, навчання й побуту', 'Калькулятор, зарплата «на руки», ФОП, ПДВ і сума прописом, курси НБУ, робочі дні, римські числа. Над інструментами — ваші робочі програми.'],
+  ['control', 914, 388, 'Пункт керування для Windows', 'Wi-Fi і Bluetooth зі списком мереж і пристроїв, темна тема, «Не турбувати», гучність, сон і вимкнення — без пошуку в параметрах.'],
+  ['system', 936, 607, 'Що відбувається з вашим ПК', 'Процесор, відеокарта, памʼять і диски з живими графіками. Програми з іконками, і завислу можна закрити одним кліком.'],
+  ['dev', 936, 538, 'Інструменти розробника поруч', 'SQL і JSON, CSV, TypeScript та Python-класи, шпаргалки Git і Docker, хеші, підмережі, cron, локальні сервери — і запити Claude Code з кнопками.'],
+  ['text', 936, 358, 'Переклад, поки ви пишете', 'Вставте текст — переклад зʼявиться сам. Автовизначення мови і заміна оригіналу одним кліком.'],
+];
+const showEl = document.getElementById('show'), showBtns = [...showEl.querySelectorAll('.show-list button')], showImg = document.getElementById('showImg');
+let showI = 0, showT = 0, showOn = false;
+for (const [f] of SHOW) { const im = new Image(); im.decoding = 'async'; im.src = 'img/' + (f.includes('.') ? f : f + '.png'); } // preload, switching stays instant
+function showGo(i, user) {
+  showI = (i + SHOW.length) % SHOW.length; const [f, w, h, t, d] = SHOW[showI];
+  showBtns.forEach((b, k) => { b.classList.toggle('on', k === showI); b.setAttribute('aria-selected', k === showI); b.tabIndex = k === showI ? 0 : -1; });
+  showImg.classList.add('swap');
+  setTimeout(() => { showImg.src = 'img/' + (f.includes('.') ? f : f + '.png'); showImg.width = w; showImg.height = h; showImg.alt = t; showImg.classList.remove('swap'); }, 180);
+  document.getElementById('showT').textContent = t; document.getElementById('showD').textContent = d;
+  const btn = showBtns[showI]; btn.style.setProperty('--dur', '7s'); const bar = btn.querySelector('i'); bar.style.display = 'none'; void bar.offsetWidth; bar.style.display = '';
+  clearTimeout(showT); if (showOn && !RM && !showEl.classList.contains('paused')) showT = setTimeout(() => showGo(showI + 1), 7000);
+  if (user && innerWidth < 860) btn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+}
+showBtns.forEach((b, k) => b.addEventListener('click', () => showGo(k, true)));
+showEl.querySelector('.show-list').addEventListener('keydown', e => { if (/Arrow(Down|Right)/.test(e.key)) { e.preventDefault(); showGo(showI + 1, true); showBtns[showI].focus(); } if (/Arrow(Up|Left)/.test(e.key)) { e.preventDefault(); showGo(showI - 1, true); showBtns[showI].focus(); } });
+showEl.addEventListener('mouseenter', () => { showEl.classList.add('paused'); clearTimeout(showT); });
+showEl.addEventListener('mouseleave', () => { showEl.classList.remove('paused'); showGo(showI); });
+new IntersectionObserver(es => es.forEach(e => { showOn = e.isIntersecting; if (showOn) showGo(showI); else clearTimeout(showT); }), { threshold: .3 }).observe(showEl);
+showGo(0);
+// hero: the eyes follow the cursor and react to a click
+const eyes = document.querySelector('.s-pill .eyes');
+if (eyes && matchMedia('(hover:hover)').matches) {
+  addEventListener('mousemove', e => { const r = eyes.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 400); eyes.style.transform = `translate(${(dx / d * 4 * k).toFixed(1)}px,${(dy / d * 3 * k).toFixed(1)}px)`; }, { passive: true });
+  eyes.addEventListener('mouseenter', () => eyes.classList.add('happy')); eyes.addEventListener('mouseleave', () => eyes.classList.remove('happy'));
+  eyes.addEventListener('click', e => { e.stopPropagation(); eyes.classList.remove('squish'); void eyes.offsetWidth; eyes.classList.add('squish'); });
+}
 const mq = document.getElementById('mq'); mq.innerHTML += mq.innerHTML;
 // staggered cards
 document.querySelectorAll('.grid .card').forEach((c, i) => c.style.setProperty('--d', i % 3));
