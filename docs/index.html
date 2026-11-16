@@ -91,7 +91,7 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-
 .burger{display:none;margin-left:auto;width:40px;height:40px;border:0;border-radius:11px;background:#ffffff0c;color:var(--tx);cursor:pointer;place-items:center}.burger svg{width:20px;height:20px}
 .mnav{position:fixed;inset:64px 0 auto 0;z-index:19;background:#0b0b10f2;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:grid;padding:10px 24px 18px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}.mnav.on{opacity:1;transform:none;pointer-events:auto}.mnav a{padding:12px 4px;border-bottom:1px solid var(--line);font-size:17px}
 .priv{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}.priv div{background:var(--card);border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}.priv svg{width:26px;height:26px;color:var(--acc2)}.priv b{display:block;margin:12px 0 6px;font-size:16.5px}.priv p{margin:0;color:var(--mute);font-size:14.5px}
-.news ul{margin:10px 0 0;padding-left:20px}.news li{margin:6px 0}.news h3{margin:0;font-size:18px;color:var(--tx)}.news small{color:var(--mute)}
+.news{max-height:none}.newsh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:6px;border-bottom:1px solid var(--line)}.newsh b{font-size:19px;color:var(--tx)}.newsh span{color:var(--mute);font-size:14px}.newsh a{margin-left:auto;color:var(--acc2);font-size:14px}.newsb{columns:2 280px;column-gap:36px}.newsb h4{margin:14px 0 4px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--acc2);break-after:avoid}.newsb ul{margin:0;padding-left:18px}.newsb li{margin:5px 0;break-inside:avoid}
 .mdl{position:fixed;left:12px;right:12px;bottom:12px;z-index:25;display:none}
 @media (max-width:860px){.burger{display:grid}nav .nbtn{display:none}.priv{grid-template-columns:1fr 1fr}.mdl{display:flex;justify-content:center;transform:translateY(120%);transition:transform .35s}.mdl.on{transform:none}.mdl .btn{width:100%;justify-content:center;box-shadow:0 14px 40px -6px #000}.top{bottom:84px}}
 @media (max-width:520px){.priv{grid-template-columns:1fr}.demo button{padding:0 11px}}
@@ -244,11 +244,18 @@ for (const a of document.querySelectorAll('.dl')) a.href = base + '/releases/lat
 fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`).then(r => r.ok ? r.json() : Promise.reject()).then(r => {
   const a = (r.assets || []).find(x => /Setup.*\.exe$/i.test(x.name)); if (a) for (const b of document.querySelectorAll('.dl')) b.href = a.browser_download_url;
   const v = r.tag_name.replace(/^v/, ''); document.getElementById('ver').textContent = `Версія ${v}${a ? ' · ' + Math.round(a.size / 1048576) + ' МБ' : ''} · Windows 10 і 11`;
+  // release notes: "Section" lines become headings, "- item" lines become lists; checksum lines are hidden
   const news = document.getElementById('news'), esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-  const lines = String(r.body || '').replace(/\n*(sha256|sig): \S+/g, '').replace(/\*\*/g, '').split('\n').map(x => x.trim()).filter(Boolean);
-  const items = lines.filter(x => /^[-*•]\s+/.test(x)).map(x => '<li>' + esc(x.replace(/^[-*•]\s+/, '')) + '</li>');
+  const lines = String(r.body || '').replace(/\r/g, '').split('\n').map(x => x.trim()).filter(x => x && !/^(sha256|sig):/i.test(x) && !/^(що нового|island)\b.*\d+\.\d+/i.test(x));
+  let html = '', open = false;
+  for (const l of lines) {
+    const li = l.match(/^[-*•]\s+(.*)/);
+    if (li) { if (!open) { html += '<ul>'; open = true; } html += '<li>' + esc(li[1].replace(/\*\*/g, '')) + '</li>'; }
+    else { if (open) { html += '</ul>'; open = false; } html += '<h4>' + esc(l.replace(/^#+\s*/, '').replace(/\*\*/g, '')) + '</h4>'; }
+  }
+  if (open) html += '</ul>';
   news.style.whiteSpace = 'normal';
-  news.innerHTML = `<h3>Island ${esc(v)}</h3><small>${new Date(r.published_at).toLocaleDateString('uk', { day: 'numeric', month: 'long', year: 'numeric' })}</small>` + (items.length ? '<ul>' + items.join('') + '</ul>' : '<p>' + esc(lines.join(' ')) + '</p>');
+  news.innerHTML = `<div class="newsh"><b>Island ${esc(v)}</b><span>${new Date(r.published_at).toLocaleDateString('uk', { day: 'numeric', month: 'long', year: 'numeric' })}</span><a href="${base}/releases" target="_blank" rel="noopener">Усі версії →</a></div><div class="newsb">${html || '<p>Опис цієї версії ще не додано.</p>'}</div>`;
 }).catch(() => { document.getElementById('news').textContent = 'Нова версія ось-ось зʼявиться.'; });
 const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
 // hero island: plays a little story; the chips under it switch states by hand (autoplay resumes after a pause)
